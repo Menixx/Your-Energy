@@ -2,127 +2,213 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/Your-Energy/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="#" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vanilla App Template</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+      rel="stylesheet"
+    />
     <script type="module" crossorigin src="/Your-Energy/index.js"></script>
-    <link rel="stylesheet" crossorigin href="/Your-Energy/assets/styles-DvPDDfy5.css">
+    <link rel="stylesheet" crossorigin href="/Your-Energy/assets/styles-BysqQD0_.css">
   </head>
   <body>
-    <header class="header">
-  <div class="container">
-    <nav class="nav">
-      <a class="nav-logo" href="./index.html" aria-label="Site logo">
-        <svg class="nav-logo-icon" width="100" height="30">
-          <use href="/Your-Energy/assets/sprite-E8vg0sBb.svg#logo"></use>
-        </svg>
-      </a>
-      <ul class="nav-list">
-        <li class="nav-item">
-          <a class="nav-link {=$highlight-act}" href="./page-2.html">Page 2</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link {=$highlight-curr}" href="./page-3.html">Page 3</a>
-        </li>
-      </ul>
-    </nav>
+    <div class="modal modal--hidden">
+      <div class="mobile-menu">
+  <button class="mobile-menu__close-btn">
+    <img src="../img/close.svg" alt="Close cross icon" />
+  </button>
+  <nav class="mobile-menu__menu">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Favorites</a></li>
+  </nav>
+  <div class="mobile-menu__socials">
+    <ul class="socials">
+  <a href="#">
+    <li class="socials-item">
+      <img src="../img/facebook.svg" alt="Facebook link icon" />
+    </li>
+  </a>
+  <a href="#">
+    <li class="socials-item">
+      <img src="../img/instagram.svg" alt="Instagram link icon" />
+    </li>
+  </a>
+  <a href="#">
+    <li class="socials-item">
+      <img src="../img/youtube.svg" alt="YouTube link icon" />
+    </li>
+  </a>
+</ul>
+
+  </div>
+</div>
+
+    </div>
+
+    <div class="container">
+      <header class="header">
+  <div class="header__container">
+    <img
+      class="header__logo"
+      src="../img/logo.png"
+      alt="logo text your energy"
+    />
+    <button class="header__menu-btn">
+      <img class="header__icon" src="/Your-Energy/menu-icon.png" alt="menu icon" />
+    </button>
   </div>
 </header>
 
-
-    <main>
-      <!-- Loads the specified .html file -->
-      <section class="vite-promo">
-  <div class="container">
-    <div class="vite-promo-thumb">
-      <a
-        class="vite-promo-link"
-        href="https://vitejs.dev/"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Link to Vite official website"
-        title="Vite.js  build tool"
-      >
-        <!-- Path to images as from index.html file -->
-        <img
-          class="pic"
-          src="/Your-Energy/assets/vite-logo-9o_aqrTe.png"
-          alt="Vite logo"
-          width="640"
-          height="640"
-        />
-      </a>
+      <main>
+        <section class="hero">
+  <div class="hero__container">
+    <div class="hero__header">
+      <h1 class="hero__header-h1">
+        Get <i>Body</i> in<br />
+        shape, Stay healthy
+      </h1>
     </div>
-    <h1 class="main-title">
-      <span class="main-title-gradient">Vite</span>
-      Template by
-      <a
-        class="main-title-link"
-        href="https://github.com/goitacademy/vanilla-app-template"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        GoIT
-      </a>
-    </h1>
+    <p class="hero__p">
+      Transform your physique and embrace a healthier lifestyle with our
+      comprehensive fitness and nutrition support.
+    </p>
+    <img
+      class="hero__image"
+      src="../img/hero-image.png"
+      alt="An image presenting to women doing sport"
+    />
+    <ul class="hero__hashtags">
+      <li class="hero__hashtag-item">#Sport</li>
+      <li class="hero__hashtag-item">#Healthy</li>
+      <li class="hero__hashtag-item">#Workout</li>
+      <li class="hero__hashtag-item">#Diet</li>
+    </ul>
   </div>
 </section>
 
-      <article class="badges">
-  <div class="container">
-    <ul class="badges-list">
-      <li class="badges-item">
-        <a
-          class="badges-link"
-          href="https://www.npmjs.com/package/vite-plugin-html-inject"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          HTML Inject
-        </a>
-      </li>
-      <li class="badges-item">
-        <a
-          class="badges-link"
-          href="https://www.npmjs.com/package/vite-plugin-full-reload"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Full Reload
-        </a>
-      </li>
-      <li class="badges-item">
-        <a
-          class="badges-link"
-          href="https://www.npmjs.com/package/postcss-sort-media-queries"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Sort Media Queries
-        </a>
-      </li>
+        <section class="exercises">
+  <div class="exercises__container">
+    <h2 class="exercises__header">Exercises</h2>
+    <ul class="exercises__filters">
+      <li class="exercises__filter exercises__filter--active">Muscles</li>
+      <li class="exercises__filter">Body parts</li>
+      <li class="exercises__filter">Equipment</li>
     </ul>
+    <ul class="exercises__cards"></ul>
+    <div class="exercises__pagination-btns">
+      <button
+        class="exercises__pagination-btn exercises__pagination-btn--active"
+      >
+        1
+      </button>
+      <button class="exercises__pagination-btn">2</button>
+    </div>
+    <div class="exercises__info">
+      <blockquote class="exercises__quote">
+        <img
+          class="exercises__quote-run-icon"
+          src="../img/run.png"
+          alt="Decorative icon in form of a running man"
+        />
+        <h3 class="exercises__quote-head">Quote of the day</h3>
+        <p class="exercises__quote-text">
+          A lot of times I find that people who are blessed with the most talent
+          don't ever develop that attitude, and the ones who aren't blessed in
+          that way are the most competitive and have the biggest heart.
+        </p>
+        <cite class="exercises__quote-author">Tom Brady</cite>
+        <img
+          class="exercises__quote-commas-icon"
+          src="../img/commas.png"
+          alt="Decorative icon in form of two inverted commas"
+        />
+      </blockquote>
+      <img
+        class="exercises__info-img"
+        src="../img/info-img.png"
+        alt="Two happy women talking to each other after a training"
+      />
+      <div class="exercises__news">
+        <img
+          class="exercises__news-icon"
+          src="../img/news.png"
+          alt="News icon"
+        />
+        <h3 class="exercises__news-head">110 min</h3>
+        <h4 class="exercises__news-sub">Daily norm of sports</h4>
+        <p class="exercises__news-text">
+          The World Health Organization recommends at least 150 minutes of
+          moderate-intensity aerobic physical activity throughout the week for
+          adults aged 18-64. However, what happens if we adjust that number to
+          110 minutes every day? While it might seem like a high number to hit,
+          dedicating 110 minutes daily to sporting activities may offer
+          unparalleled benefits to physical health, mental well-being, and
+          overall quality of life.
+        </p>
+      </div>
+    </div>
   </div>
-</article>
+</section>
 
-    </main>
+      </main>
+    </div>
 
     <footer class="footer">
-  <div class="container">
-    <p class="footer-desc">
-      Made with ✨ by
-      <a
-        class="footer-link"
-        href="https://goit.global/ua/"
-        target="_blank"
-        rel="noopener noreferrer"
+  <div class="container footer__container">
+    <img
+      class="footer__grid-item footer__logo"
+      src="../img/logo-footer.png"
+      alt="logo text your energy"
+    />
+    <div class="footer__grid-item footer__socials">
+      <ul class="socials">
+  <a href="#">
+    <li class="socials-item">
+      <img src="../img/facebook.svg" alt="Facebook link icon" />
+    </li>
+  </a>
+  <a href="#">
+    <li class="socials-item">
+      <img src="../img/instagram.svg" alt="Instagram link icon" />
+    </li>
+  </a>
+  <a href="#">
+    <li class="socials-item">
+      <img src="../img/youtube.svg" alt="YouTube link icon" />
+    </li>
+  </a>
+</ul>
+
+    </div>
+    <h2 class="footer__grid-item footer__header">
+      Transforming your <i>body</i> shape with us
+    </h2>
+    <form class="footer__grid-item footer__subscribe" action="#">
+      <p>Subscribe and learn about new exercises!</p>
+      <input
+        class="footer__subscribe-element footer__subscribe-email"
+        type="email"
+        placeholder="Email"
+      />
+      <button
+        class="footer__subscribe-element footer__subscribe-btn"
+        type="submit"
       >
-        GoIT team
-      </a>
+        Send
+      </button>
+    </form>
+    <p class="footer__grid-item footer__rights">
+      <a href="#">Your Energy. All rights reserved.</a>
     </p>
+    <p class="footer__grid-item footer__policy">
+      <a href="#">Privacy Policy / Terms of Service</a>
+    </p>
+    <p class="footer__grid-item footer__year">©2023</p>
   </div>
 </footer>
-
 
   </body>
 </html>
