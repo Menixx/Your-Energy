@@ -11,6 +11,8 @@ node_modules
 dist
 dist-ssr
 *.local
+github-keys.txt
+github-keys.pub.txt
 
 # Editor directories and files
 .vscode/*

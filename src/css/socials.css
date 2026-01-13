@@ -1,0 +1,15 @@
+.socials {
+  width: 144px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.socials-item {
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(244, 244, 244, 0.1);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

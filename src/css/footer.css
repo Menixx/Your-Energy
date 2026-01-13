@@ -1,21 +1,67 @@
 .footer {
-  padding: 20px 0;
+  background-color: rgba(36, 36, 36, 1);
 }
-.footer-desc {
-  text-align: center;
+
+.footer__container {
+  padding-top: 40px;
+  display: grid;
+  grid-template-columns: 2;
 }
-.footer-link {
-  position: relative;
+
+.footer__grid-item {
+  grid-column-start: 1;
+  grid-column-end: 3;
 }
-.footer-link::before {
-  content: '';
-  position: absolute;
-  bottom: 6%;
-  left: 50%;
-  transform: translateX(-50%) skewX(-12deg);
-  z-index: -1;
-  width: 110%;
-  height: 24%;
-  background-color: #41d1ff;
-  transition: 200ms ease;
+
+.footer__logo {
+  width: 132px;
+  height: 24px;
+  margin-bottom: 20px;
+}
+
+.footer__socials {
+  margin-bottom: 40px;
+}
+
+.footer__header {
+  display: block;
+  width: 100%;
+  margin-bottom: 20px;
+  font-size: 38px;
+  line-height: 44px;
+}
+
+.footer__subscribe {
+  margin-bottom: 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.footer__subscribe-element {
+  border-radius: 30px;
+  padding: 12px;
+  border: 1px solid var(--main-color-light);
+}
+
+.footer__subscribe-email {
+  background-color: transparent;
+  color: var(--side-color-light);
+}
+
+.footer__subscribe-btn {
+  color: var(--main-color-dark);
+}
+
+.footer__rights {
+  margin-bottom: 10px;
+}
+
+.footer__policy {
+  grid-column: 1;
+}
+
+.footer__year {
+  grid-column: 2;
+  justify-self: end;
 }
