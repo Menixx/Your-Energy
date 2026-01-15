@@ -2,18 +2,37 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 20px;
+  padding-top: 5.45vw; /* 20px -> 5.45vw */
 }
 
 .header__icon {
-  width: 32px;
+  width: 8.72vw; /* 32px -> 8.72vw */
 }
 
 .header__logo {
-  width: 132px;
-  height: 14px;
+  width: 35.97vw; /* 132px -> 35.97vw */
+  height: 3.81vw; /* 14px -> 3.81vw */
 }
 
 .header__menu-btn {
   border: none;
+}
+
+.header__socials {
+  display: none;
+}
+
+@media (min-width: 368px) {
+  .header__socials {
+    display: block;
+  }
+
+  .header__logo {
+    width: 17.19vw; /* 132px -> 17.19vw */
+    height: 1.82vw; /* 14px -> 1.82vw */
+  }
+
+  .header__container {
+    padding-top: 3.13vw; /* 24px -> 3.13vw */
+  }
 }

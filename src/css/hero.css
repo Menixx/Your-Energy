@@ -3,9 +3,9 @@
 }
 
 .hero__container {
-  padding: 80px 0 0;
+  padding: 21.8vw 0 0; /* 80px -> 21.80vw */
   display: grid;
-  gap: 20px;
+  gap: 5.45vw; /* 20px -> 5.45vw */
 }
 
 .hero__header {
@@ -13,8 +13,8 @@
 }
 
 .hero__header-h1 {
-  font-size: 38px;
-  line-height: 44px;
+  font-size: 10.35vw; /* 38px -> 10.35vw */
+  line-height: 11.99vw; /* 44px -> 11.99vw */
   letter-spacing: -2%;
 }
 
@@ -22,8 +22,8 @@
   content: '';
   background-image: url(../img/sun.png);
   display: inline-block;
-  width: 38px;
-  height: 38px;
+  width: 10.35vw; /* 38px -> 10.35vw */
+  height: 10.35vw; /* 38px -> 10.35vw */
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -34,15 +34,59 @@
 
 .hero__image {
   width: 100%;
+  border-radius: 30px;
+  aspect-ratio: 1 / 1.73;
+  object-fit: cover;
 }
 
 .hero__hashtags {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
+  flex-wrap: wrap;
+  gap: 4px;
 }
 
 .hero__hashtag-item {
-  border: 1px solid var(--main-color-dark);
-  border-radius: 30px;
-  padding: 4px 12px;
+  border: 0.27vw solid var(--main-color-dark); /* 1px -> 0.27vw */
+  border-radius: 8.17vw; /* 30px -> 8.17vw */
+  padding: 0.9vw 3.17vw; /* 4px -> 1.09vw, 12px -> 3.27vw */
+}
+
+@media (min-width: 368px) {
+  .hero__container {
+    padding-top: 13.02vw; /* 100px -> 13.02vw (base 768px) */
+    gap: 2.08vw; /* 16px -> 2.08vw */
+  }
+
+  .hero__header-h1 {
+    font-size: 9.64vw; /* 74px -> 9.64vw */
+    line-height: 9.64vw; /* 74px -> 9.64vw */
+    width: 83.2vw; /* 639px -> 83.20vw */
+  }
+
+  .hero__header-h1::before {
+    width: 7.68vw; /* 59px -> 7.68vw */
+    height: 7.68vw; /* 59px -> 7.68vw */
+  }
+
+  .hero__p {
+    font-size: 2.34vw; /* 18px -> 2.34vw */
+    line-height: 3.13vw; /* 24px -> 3.13vw */
+    width: 68.75vw; /* 528px -> 68.75vw */
+    margin-bottom: 1.56vw; /* 12px -> 1.56vw */
+  }
+
+  .hero__image {
+    width: 100%;
+    border-radius: 7.81vw; /* 60px -> 7.81vw */
+    aspect-ratio: 1.28 / 1;
+  }
+
+  .hero__hashtags {
+    font-size: 2.08vw; /* 16px -> 2.08vw */
+    line-height: 3.13vw; /* 24px -> 3.13vw */
+
+    justify-content: end;
+    gap: 1.04vw; /* 8px -> 1.04vw */
+  }
 }

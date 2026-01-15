@@ -32,8 +32,8 @@ function handleFetchResponse(response) {
 }
 
 function setQuote() {
-  const quoteText = document.querySelector('.exercises__quote-text');
-  const quoteAuthor = document.querySelector('.exercises__quote-author');
+  const quoteText = document.querySelector('.aside__quote-text');
+  const quoteAuthor = document.querySelector('.aside__quote-author');
 
   fetch('https://your-energy.b.goit.study/api/quote')
     .then(response => handleFetchResponse(response))

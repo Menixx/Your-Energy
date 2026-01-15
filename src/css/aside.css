@@ -1,0 +1,137 @@
+.aside {
+  display: grid;
+  gap: 5.45vw; /* 20px -> 5.45vw */
+}
+
+.aside__quote {
+  position: relative;
+  background-color: var(--main-color-dark);
+  padding: 5.45vw 5.45vw 5.45vw 19.62vw; /* 20px -> 5.45vw, 72px -> 19.62vw */
+  border-radius: 20px;
+}
+
+.aside__quote-run-icon {
+  width: 9vw;
+  position: absolute;
+  left: 5.45vw; /* 20px -> 5.45vw */
+  top: 5.45vw; /* 20px -> 5.45vw */
+}
+
+.aside__quote-commas-icon {
+  width: 5.45vw; /* 20px -> 5.45vw */
+  position: absolute;
+  right: 5.45vw; /* 20px -> 5.45vw */
+  top: 5.45vw; /* 20px -> 5.45vw */
+}
+
+.aside__quote-head {
+  font-weight: 500;
+  font-size: 5.45vw; /* 20px -> 5.45vw */
+  line-height: 5.45vw; /* 20px -> 5.45vw */
+  margin-bottom: 2.18vw; /* 8px -> 2.18vw */
+}
+
+.aside__quote-text {
+  color: var(--side-color-light);
+  margin-bottom: 4.36vw; /* 16px -> 4.36vw */
+}
+
+.aside-img {
+  border-radius: 20px;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.aside__news {
+  position: relative;
+  background-color: rgba(255, 255, 255, 1);
+  padding: 5.45vw 5.45vw 5.45vw 19.62vw; /* 20px -> 5.45vw, 72px -> 19.62vw */
+  border-radius: 20px;
+}
+
+.aside__news-icon {
+  width: 9vw;
+  position: absolute;
+  left: 5.45vw; /* 20px -> 5.45vw */
+  top: 5.45vw; /* 20px -> 5.45vw */
+}
+
+.aside__news-head {
+  font-weight: 500;
+  font-size: 5.45vw; /* 20px -> 5.45vw */
+  line-height: 5.45vw; /* 20px -> 5.45vw */
+  margin-bottom: 8px;
+  color: var(--main-color-dark);
+}
+
+.aside__news-sub {
+  color: var(--side-color-dark);
+  margin-bottom: 4.36vw; /* 16px -> 4.36vw */
+}
+
+.aside__news-text {
+  color: var(--main-color-dark);
+  display: -webkit-box;
+  line-clamp: 5;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@media (min-width: 368px) {
+  .aside {
+    margin-top: 8.33vw; /* 64px -> 8.33vw */
+    grid-template-columns: 52vw 1fr;
+    gap: 4.17vw 2.08vw; /* 32px -> 4.17vw, 16px -> 2.08vw */
+  }
+
+  .aside__quote {
+    padding: 5.21vw 5.21vw 5.21vw 11.72vw; /* 40px -> 5.21vw, 90px -> 11.72vw */
+  }
+
+  .aside__quote-run-icon {
+    left: 5.21vw; /* 40px -> 5.21vw */
+    top: 5.21vw; /* 40px -> 5.21vw */
+    width: 5.08vw;
+  }
+
+  .aside__quote-commas-icon {
+    width: 3.13vw; /* 24px -> 3.13vw */
+    top: 5.21vw; /* 40px -> 5.21vw */
+    right: 5.21vw; /* 40px -> 5.21vw */
+  }
+
+  .aside-img {
+    height: 100%;
+  }
+
+  .aside__quote-head {
+    font-size: 3.13vw; /* 24px -> 3.13vw */
+    line-height: 4.17vw; /* 32px -> 4.17vw */
+  }
+
+  .aside__quote-author {
+    font-size: 2.08vw; /* 16px -> 2.08vw */
+    line-height: 3.13vw; /* 24px -> 3.13vw */
+  }
+
+  .aside__news {
+    padding: 5.21vw 5.21vw 5.21vw 11.72vw; /* 40px -> 5.21vw, 90px -> 11.72vw */
+  }
+
+  .aside__news-icon {
+    left: 5.21vw; /* 40px -> 5.21vw */
+    top: 5.21vw; /* 40px -> 5.21vw */
+    width: 5.08vw;
+  }
+
+  .aside__news-head {
+    font-size: 3.13vw; /* 24px -> 3.13vw */
+    line-height: 4.17vw; /* 32px -> 4.17vw */
+  }
+
+  .aside__news-sub {
+    margin-bottom: 2.6vw; /* 20px -> 2.60vw */
+  }
+}
