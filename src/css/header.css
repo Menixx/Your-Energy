@@ -36,3 +36,14 @@
     padding-top: 3.13cqw; /* 24px -> 3.13cqw */
   }
 }
+
+@media (min-width: 769px) {
+  .header__logo {
+    width: 9.17cqw;
+    height: auto;
+  }
+
+  .header__container {
+    padding-top: 1.94cqw;
+  }
+}

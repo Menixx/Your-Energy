@@ -36,3 +36,18 @@
     display: none;
   }
 }
+
+@media (min-width: 769px) {
+  .main-menu {
+    border-radius: 4.17cqw;
+    padding: 0.56cqw 3.47cqw;
+    gap: 1.25cqw;
+    font-size: 1.11cqw;
+    line-height: 1.67cqw;
+  }
+
+  .main-menu__tab--current {
+    padding: 0.42cqw 0.83cqw;
+    border-radius: 2.08cqw;
+  }
+}

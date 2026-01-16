@@ -12,6 +12,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  container-type: inline-size;
+}
+
+.socials-item-img {
+  width: 64cqw;
 }
 
 @media (min-width: 368px) {
@@ -28,5 +33,18 @@
 
   .header__socials .socials-item {
     filter: invert(1);
+  }
+}
+
+@media (min-width: 769px) {
+  .socials {
+    width: 10.83cqw;
+  }
+
+  .socials-item {
+    width: 3.06cqw;
+    height: 3.06cqw;
+    border-radius: 0.69cqw;
+    border-width: 0.07cqw;
   }
 }
