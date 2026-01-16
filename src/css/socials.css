@@ -1,14 +1,14 @@
 .socials {
-  width: 39.24vw; /* 144px -> 39.24vw */
+  width: 39.24cqw; /* 144px -> 39.24cqw */
   display: flex;
   justify-content: space-between;
 }
 
 .socials-item {
-  width: 10.9vw; /* 40px -> 10.90vw */
-  height: 10.9vw; /* 40px -> 10.90vw */
-  border: 0.27vw solid rgba(244, 244, 244, 0.1); /* 1px -> 0.27vw */
-  border-radius: 2.72vw; /* 10px -> 2.72vw */
+  width: 10.9cqw; /* 40px -> 10.90cqw */
+  height: 10.9cqw; /* 40px -> 10.90cqw */
+  border: 0.27cqw solid rgba(244, 244, 244, 0.1); /* 1px -> 0.27cqw */
+  border-radius: 2.72cqw; /* 10px -> 2.72cqw */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -16,14 +16,14 @@
 
 @media (min-width: 368px) {
   .socials {
-    width: 20.31vw; /* 156px -> 20.31vw */
+    width: 20.31cqw; /* 156px -> 20.31cqw */
   }
 
   .socials-item {
-    width: 5.73vw; /* 44px -> 5.73vw */
-    height: 5.73vw; /* 44px -> 5.73vw */
-    border-radius: 1.3vw; /* 10px -> 1.30vw */
-    border-width: 0.13vw; /* 1px -> 0.13vw */
+    width: 5.73cqw; /* 44px -> 5.73cqw */
+    height: 5.73cqw; /* 44px -> 5.73cqw */
+    border-radius: 1.3cqw; /* 10px -> 1.30cqw */
+    border-width: 0.13cqw; /* 1px -> 0.13cqw */
   }
 
   .header__socials .socials-item {

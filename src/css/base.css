@@ -21,9 +21,10 @@ i {
 }
 
 .container {
-  padding: 0 5.45vw 0; /* 20px -> 5.45vw */
-  /* margin: 0 auto; */
+  padding: 0 5.45cqw 0; /* 20px -> 5.45cqw */
+  margin: 0 auto;
   max-width: 367px;
+  container-type: inline-size;
 }
 
 .modal {
@@ -46,7 +47,14 @@ i {
 
 @media (min-width: 368px) {
   .container {
-    padding: 0 4.17vw 0; /* 32px -> 4.17vw */
-    max-width: 100vw; /* 768px -> 100vw */
+    padding: 0 4.17cqw 0; /* 32px -> 4.17cqw */
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 769px) {
+  .container {
+    /* padding: 0 4.17cqw 0; 32px -> 4.17cqw */
+    max-width: 1440px;
   }
 }

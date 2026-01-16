@@ -13,8 +13,8 @@
 
 .mobile-menu__close-btn {
   position: absolute;
-  top: 5.45vw; /* 20px -> 5.45vw */
-  right: 5.45vw; /* 20px -> 5.45vw */
+  top: 5.45cqw; /* 20px -> 5.45cqw */
+  right: 5.45cqw; /* 20px -> 5.45cqw */
   background-color: transparent;
   padding: 0;
   border: none;
@@ -22,6 +22,6 @@
 
 .mobile-menu__socials {
   position: absolute;
-  bottom: 5.45vw; /* 20px -> 5.45vw */
+  bottom: 5.45cqw; /* 20px -> 5.45cqw */
   align-self: center;
 }
