@@ -12,7 +12,7 @@
       rel="stylesheet"
     />
     <script type="module" crossorigin src="/Your-Energy/index.js"></script>
-    <link rel="stylesheet" crossorigin href="/Your-Energy/assets/styles-CHqvsqXg.css">
+    <link rel="stylesheet" crossorigin href="/Your-Energy/assets/styles-CROnRixm.css">
   </head>
   <body>
     <div class="modal modal--hidden">
@@ -170,19 +170,31 @@
   </div>
 </section>
 
+
         <section class="exercises">
   <div class="exercises__container">
     <h2 class="exercises__header">Exercises</h2>
+    <div class="exercises__search" hidden>
+      <input
+        class="exercises__search-input"
+        type="search"
+        placeholder="Search"
+        id="search"
+      />
+    </div>
     <ul class="exercises__filters">
-      <li class="exercises__filter exercises__filter--active">Muscles</li>
-      <li class="exercises__filter">Body parts</li>
-      <li class="exercises__filter">Equipment</li>
+      <li
+        class="exercises__filter exercises__filter--active"
+        data-filter="Muscles"
+      >
+        Muscles
+      </li>
+      <li class="exercises__filter" data-filter="Body%20parts">Body parts</li>
+      <li class="exercises__filter" data-filter="Equipment">Equipment</li>
     </ul>
     <ul class="exercises__cards"></ul>
+    <ul class="exercises-workout__cards" hidden></ul>
     <div class="exercises__pagination-btns">
-      <button class="exercises__pagination-btn exercises__pagination-arrow-btn">
-        &lt;&lt;
-      </button>
       <!-- <button
         class="exercises__pagination-btn exercises__pagination-btn--active"
       >
