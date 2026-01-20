@@ -1,0 +1,340 @@
+.exercises__header::after {
+  content: var(--after-content, '');
+
+  font-size: 5.43cqw;
+  line-height: 5.43cqw;
+  color: rgba(36, 36, 36, 0.5);
+}
+
+.exercises__search {
+  margin-top: 5.45cqw;
+
+  position: relative;
+  display: flex;
+}
+
+.exercises__search-input {
+  padding: 3.27cqw 3.81cqw;
+  border: 0.27cqw solid var(--main-color-dark);
+  border-radius: 8.17cqw;
+  font-size: 3.81cqw; /* 14px -> 3.81cqw */
+  line-height: 5.45cqw; /* 20px -> 5.45cqw */
+  width: 100%;
+}
+
+.exercises__search::after {
+  content: '';
+  background-image: url(../img/search.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 4.9cqw;
+  height: 4.9cqw;
+
+  position: absolute;
+  right: 3.81cqw;
+
+  align-self: center;
+}
+
+.exercises-workout__cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5.45cqw;
+}
+
+.exercises__workout-card {
+  width: 100%;
+  padding: 4.36cqw; /* 16px -> 4.36cqw */
+  color: var(--main-color-dark);
+  border-radius: 4.09cqw; /* 15px -> 4.09cqw */
+  background-color: rgba(255, 255, 255, 1);
+
+  display: grid;
+  grid-template-columns: 25.07cqw auto auto; /* 92px -> 25.07cqw */
+}
+
+.exercises__workout-badge {
+  width: fit-content;
+  height: 7.08cqw;
+  box-sizing: border-box;
+  font-weight: 500;
+  font-size: 3.27cqw; /* 12px -> 3.27cqw */
+  line-height: 100%;
+  border: 0.27cqw solid var(--main-color-dark); /* 1px -> 0.27cqw */
+  border-radius: 4.09cqw; /* 15px -> 4.09cqw */
+  padding: 1.36cqw 2.18cqw; /* 5px -> 1.36cqw, 8px -> 2.18cqw */
+  margin-bottom: 6.81cqw; /* 25px -> 6.81cqw */
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.exercises__workout-grade {
+  height: 7.08cqw;
+
+  align-self: start;
+
+  display: flex;
+  gap: 0.54cqw; /* 2px -> 0.54cqw */
+  align-items: center;
+
+  grid-column: 2;
+}
+
+.exercises__workout-grade-value {
+  font-size: 3.27cqw;
+}
+
+.exercises__workout-grade-star {
+  width: 4.36cqw; /* 16px -> 4.36cqw */
+}
+
+.exercises__workout-start {
+  display: flex;
+  gap: 2.18cqw; /* 8px -> 2.18cqw */
+  align-items: start;
+  justify-content: end;
+
+  grid-column: 3;
+}
+
+.exercises__workout-start-arrow {
+  width: 4.9cqw; /* 18px -> 4.90cqw */
+}
+
+.exercises__workout-header {
+  margin-bottom: 4.36cqw; /* 16px -> 4.36cqw */
+
+  display: flex;
+  gap: 4.36cqw; /* 16px -> 4.36cqw */
+
+  grid-column-start: 1;
+  grid-column-end: 4;
+  grid-row: 2;
+}
+
+.exercises__workout-header-name {
+  font-size: 5.45cqw; /* 20px -> 5.45cqw */
+  line-height: 5.45cqw; /* 20px -> 5.45cqw */
+}
+
+.exercises__workout-header-img {
+  width: 6.54cqw; /* 24px -> 6.54cqw */
+  height: 6.54cqw; /* 24px -> 6.54cqw */
+}
+
+.exercises__workout-info {
+  font-size: 3.27cqw; /* 12px -> 3.27cqw */
+  color: rgba(36, 36, 36, 0.4);
+
+  display: flex;
+  gap: 2.72cqw; /* 10px -> 2.72cqw */
+  justify-content: space-between;
+
+  grid-row: 3;
+  grid-column-start: 1;
+  grid-column-end: 4;
+}
+
+@media (min-width: 368px) {
+  .exercises__header::after {
+    font-size: 2.6cqw;
+    line-height: 2.6cqw;
+  }
+
+  .exercises__search {
+    width: 35.55cqw;
+    margin-top: unset;
+
+    grid-row: 2;
+  }
+
+  .exercises__search-input {
+    padding: 1.56cqw 1.82cqw;
+    border-width: 0.13cqw;
+    border-radius: 3.9cqw;
+    font-size: 2.08cqw; /* 16px -> 2.08cqw */
+    line-height: 3.13cqw; /* 24px -> 3.13cqw */
+  }
+
+  .exercises__search::after {
+    width: 2.34cqw;
+    height: 2.34cqw;
+
+    right: 1.82cqw;
+  }
+
+  .exercises-workout__cards {
+    gap: 4.17cqw 2.08cqw;
+
+    grid-row: 3;
+    grid-column-start: 1;
+    grid-column-end: 3;
+  }
+
+  .exercises__workout-card {
+    width: 44.79cqw;
+    padding: 2.08cqw;
+    border-radius: 1.95cqw;
+
+    grid-template-columns: 9.9cqw auto auto;
+  }
+
+  .exercises__workout-badge {
+    height: 3.37cqw;
+    font-size: 1.56cqw;
+    border-width: 0.13cqw;
+    border-radius: 1.95cqw;
+    padding: 0.65cqw 1.04cqw;
+    margin-bottom: 3.26cqw;
+  }
+
+  .exercises__workout-grade {
+    height: 3.37cqw;
+    margin-left: 2.08cqw;
+
+    gap: 0.26cqw;
+  }
+
+  .exercises__workout-grade-value {
+    font-size: 1.56cqw;
+  }
+
+  .exercises__workout-grade-star {
+    width: 2.08cqw;
+  }
+
+  .exercises__workout-start {
+    gap: 1.04cqw;
+  }
+
+  .exercises__workout-start-arrow {
+    width: 2.34cqw;
+  }
+
+  .exercises__workout-header {
+    margin-bottom: 2.08cqw;
+
+    gap: 2.08cqw;
+  }
+
+  .exercises__workout-header-name {
+    font-size: 2.6cqw;
+    line-height: 2.6cqw;
+  }
+
+  .exercises__workout-header-img {
+    width: 3.125cqw;
+    height: 3.125cqw;
+  }
+
+  .exercises__workout-info {
+    font-size: 1.56cqw;
+
+    gap: 1.3cqw;
+  }
+}
+
+@media (min-width: 768px) {
+  .exercises__header::after {
+    font-size: 1.39cqw;
+    line-height: 1.39cqw;
+  }
+
+  .exercises__search {
+    width: 18.96cqw;
+    margin-top: unset;
+
+    justify-self: end;
+
+    grid-row: 1;
+    grid-column: 2;
+  }
+
+  .exercises__search-input {
+    padding: 0.83cqw 0.97cqw;
+    border-width: 0.07cqw;
+    border-radius: 2.08cqw;
+    font-size: 1.11cqw;
+    line-height: 1.67cqw;
+  }
+
+  .exercises__search::after {
+    width: 1.25cqw;
+    height: 1.25cqw;
+
+    right: 0.97cqw;
+  }
+
+  .exercises-workout__cards {
+    gap: 32px 16px;
+
+    grid-row: 2;
+    grid-column-start: 2;
+    grid-column-end: 4;
+  }
+
+  .exercises__workout-card {
+    width: 442px;
+    box-sizing: border-box;
+    padding: 16px;
+    border-radius: 15px;
+
+    grid-template-columns: 76px auto auto;
+  }
+
+  .exercises__workout-badge {
+    height: 26px;
+    font-size: 12px;
+    border-width: 1px;
+    border-radius: 15px;
+    padding: 5px 8px;
+    margin-bottom: 24px;
+  }
+
+  .exercises__workout-grade {
+    height: 26px;
+    margin-left: 16px;
+
+    gap: 2px;
+  }
+
+  .exercises__workout-grade-value {
+    font-size: 12px;
+  }
+
+  .exercises__workout-grade-star {
+    width: 18px;
+  }
+
+  .exercises__workout-start {
+    gap: 8px;
+  }
+
+  .exercises__workout-start-arrow {
+    width: 16px;
+  }
+
+  .exercises__workout-header {
+    margin-bottom: 8px;
+
+    gap: 16px;
+  }
+
+  .exercises__workout-header-name {
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  .exercises__workout-header-img {
+    width: 24px;
+    height: 24px;
+  }
+
+  .exercises__workout-info {
+    font-size: 12px;
+
+    gap: 16px;
+  }
+}

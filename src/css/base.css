@@ -45,6 +45,10 @@ i {
   display: none;
 }
 
+[hidden] {
+  display: none !important;
+}
+
 @media (min-width: 368px) {
   .container {
     padding: 0 4.17cqw 0; /* 32px -> 4.17cqw */

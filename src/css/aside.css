@@ -84,6 +84,10 @@
     margin-top: 8.33cqw; /* 64px -> 8.33cqw */
     grid-template-columns: 52cqw 1fr;
     gap: 4.17cqw 2.08cqw; /* 32px -> 4.17cqw, 16px -> 2.08cqw */
+
+    grid-row: 5;
+    grid-column-start: 1;
+    grid-column-end: 3;
   }
 
   .aside__quote {

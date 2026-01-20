@@ -1,30 +1,30 @@
 // import { Notyf } from 'notyf';
 
-class ExercisesCard {
-  constructor({ name, filter, imgURL }) {
-    this.name = name;
-    this.filter = filter;
-    this.imgURL = imgURL;
-  }
+// class ExercisesCard {
+//   constructor({ name, filter, imgURL }) {
+//     this.name = name;
+//     this.filter = filter;
+//     this.imgURL = imgURL;
+//   }
 
-  getHTML() {
-    return `
-      <li class="exercises__card" 
-        style="background: 
-                linear-gradient(rgba(17, 17, 17, 0.5), rgba(17, 17, 17, 0.5)),
-                url(${this.imgURL});
-              background-size: cover;
-              background-repeat: no-repeat;
-              background-position: center;
-        ">
-        <h3 class="exercises__card-name">${
-          this.name[0].toUpperCase() + this.name.substring(1)
-        }</h3>
-        <p class="exercises__card-filter">${this.filter}</p>
-      </li>
-    `;
-  }
-}
+//   getHTML() {
+//     return `
+//       <li class="exercises__card"
+//         style="background:
+//                 linear-gradient(rgba(17, 17, 17, 0.5), rgba(17, 17, 17, 0.5)),
+//                 url(${this.imgURL});
+//               background-size: cover;
+//               background-repeat: no-repeat;
+//               background-position: center;
+//         ">
+//         <h3 class="exercises__card-name">${
+//           this.name[0].toUpperCase() + this.name.substring(1)
+//         }</h3>
+//         <p class="exercises__card-filter">${this.filter}</p>
+//       </li>
+//     `;
+//   }
+// }
 
 function handleFetchResponse(response) {
   if (!response.ok) {
@@ -92,17 +92,9 @@ async function setExercisesCardsAndGetResponse(
   filter = 'Muscles',
   page = 1
 ) {
-  if (filter === 'Body Parts') {
-    filter = 'Body%20parts';
-  }
-
   try {
-    // const response = await fetch(
-    //   `https://your-energy.b.goit.study/api/filters?limit=${limit}&filter=${filter}&page=${page}`
-    // );
-
     const response = await fetch(
-      `https://your-energy.b.goit.study/api/filters?limit=${limit}&page=${page}`
+      `https://your-energy.b.goit.study/api/filters?limit=${limit}&filter=${filter}&page=${page}`
     );
 
     if (!response.ok) {
@@ -111,14 +103,36 @@ async function setExercisesCardsAndGetResponse(
 
     const data = await response.json();
 
-    // console.log(data);
     const cards = document.querySelector('.exercises__cards');
     cards.innerHTML = '';
+    const fragment = document.createDocumentFragment();
 
     for (let item of data.results) {
-      const card = new ExercisesCard(item);
-      cards.innerHTML += card.getHTML();
+      const card = document.createElement('li');
+      card.classList.add('exercises__card');
+      card.style.setProperty('--bg-img', `url(${item.imgURL})`);
+      card.dataset.name = item.name;
+      card.dataset.filter = item.filter;
+
+      const h3 = document.createElement('h3');
+      h3.classList.add('exercises__card-name');
+      h3.textContent = item.name[0].toUpperCase() + item.name.substring(1);
+      card.appendChild(h3);
+
+      const p = document.createElement('p');
+      p.classList.add('exercises__card-filter');
+      p.textContent = item.filter;
+      card.appendChild(p);
+
+      fragment.appendChild(card);
     }
+    cards.appendChild(fragment);
+
+    paginationState.page = data.page;
+    paginationState.perPage = data.perPage;
+    paginationState.totalPages = data.totalPages;
+
+    setPagination(paginationState);
 
     return data;
   } catch (err) {
@@ -153,14 +167,23 @@ function mobMenuCloseHandler() {
   closeMobMenu(closeMenuBtn);
 }
 
-function handleFilterClick(target) {
-  if (target !== currentFilter) {
-    setExercisesCardsAndGetResponse(12, target.textContent, 1);
+function handleFilterClick(event) {
+  const target = event.target;
 
-    currentFilter.classList.toggle('exercises__filter--active');
+  if (target.dataset.filter !== currentFilter) {
+    currentFilter = target.dataset.filter;
+
+    document
+      .querySelector('.exercises__filter--active')
+      .classList.toggle('exercises__filter--active');
     target.classList.toggle('exercises__filter--active');
-    currentFilter = target;
   }
+
+  if (currentExercisesPageState === 'workout') {
+    toggleExercisesSection();
+  }
+
+  setExercisesCardsAndGetResponse(cardsLimit, currentFilter, 1);
 }
 
 async function subscribe(validAddress) {
@@ -192,29 +215,9 @@ async function subscribe(validAddress) {
   }
 }
 
-async function renderContentPage(content = 'exercises') {
-  // An object containing GET-requests response data
-  let responseData;
-
-  if (content === 'exercises') {
-    if (window.innerWidth <= 365) {
-      responseData = await setExercisesCardsAndGetResponse(9);
-    } else {
-      responseData = await setExercisesCardsAndGetResponse(12);
-    }
-  }
-
-  const { page, perPage, totalPages } = responseData;
-  paginationState.page = Number(page);
-  paginationState.perPage = Number(perPage);
-  paginationState.totalPages = Number(totalPages);
-
-  setPagination(paginationState);
-}
-
-// Встановлює кнопки пагінації на сторінці
 function setPagination({ totalPages, page }) {
-  const btns = document.querySelector('.exercises__pagination-btns');
+  let btns = document.querySelector('.exercises__pagination-btns');
+
   const container = document.createDocumentFragment();
 
   btns.innerHTML = '';
@@ -320,9 +323,7 @@ function setPagination({ totalPages, page }) {
     container.appendChild(rightDoubleArrow);
   }
 
-  btns.addEventListener('click', onPaginationClick);
   btns.appendChild(container);
-  btns.addEventListener('click', onPaginationClick);
 }
 
 function onPaginationClick(event) {
@@ -349,41 +350,185 @@ function handlePagination(pagValue) {
     }
   }
 
-  setExercisesCardsAndGetResponse(
-    paginationState.perPage,
-    currentFilter,
-    paginationState.page
-  );
+  if (currentExercisesPageState === 'filters') {
+    setExercisesCardsAndGetResponse(
+      paginationState.perPage,
+      currentFilter,
+      paginationState.page
+    );
+  } else if (currentExercisesPageState === 'workout') {
+    setWorkoutCardsAndGetResponse(
+      currentCard,
+      paginationState.perPage,
+      paginationState.page
+    );
+  }
 
   setPagination(paginationState);
 }
+
+async function setWorkoutCardsAndGetResponse(name, limit = 12, page = 1) {
+  const url = new URL('https://your-energy.b.goit.study/api/exercises');
+
+  const params = {
+    page,
+    limit,
+    ...(currentFilter === 'Muscles' && { muscles: name }),
+    ...(currentFilter === 'Equipment' && { equipment: name }),
+    ...(currentFilter === 'Body%20parts' && { bodypart: name }),
+  };
+
+  url.search = new URLSearchParams(params).toString();
+
+  try {
+    const response = await fetch(url.toString());
+    const data = await response.json();
+
+    const cards = document.querySelector('.exercises-workout__cards');
+    cards.innerHTML = '';
+    const fragment = document.createDocumentFragment();
+
+    for (let item of data.results) {
+      const card = document.createElement('li');
+      card.classList.add('exercises__workout-card');
+      card.innerHTML = getWorkoutCardHTML(item);
+
+      fragment.appendChild(card);
+    }
+    cards.appendChild(fragment);
+
+    paginationState.page = data.page;
+    paginationState.perPage = data.perPage;
+    paginationState.totalPages = data.totalPages;
+    setPagination(paginationState);
+
+    return data;
+  } catch (err) {
+    throw err;
+  }
+}
+
+function getWorkoutCardHTML(data) {
+  return `
+        <p class="exercises__workout-badge">WORKOUT</p>
+        <div class="exercises__workout-grade">
+          <p class="exercises__workout-grade-value">${data.rating}</p>
+          <img
+            class="exercises__workout-grade-star"
+            src="../img/star.svg"
+            alt="Star icon"
+          />
+        </div>
+        <div class="exercises__workout-start">
+          <p class="exercises__workout-start-text">Start</p>
+          <img
+            src="../img/start-arrow.svg"
+            alt="Arrow icon"
+            class="exercises__workout-start-arrow"
+          />
+        </div>
+        <div class="exercises__workout-header">
+          <img
+            class="exercises__workout-header-img"
+            src="../img/run-dark.png"
+            alt="Run icon"
+          />
+          <h3 class="exercises__workout-header-name">${
+            data.name[0].toUpperCase() + data.name.slice(1)
+          }</h3>
+        </div>
+        <div class="exercises__workout-info">
+          <p class="exercises__workout-info-calories">Burned calories: ${
+            data.burnedCalories
+          }/${data.time}</p>
+          <p class="exercises__workout-info-body-part">Body part: ${
+            data.bodyPart[0].toUpperCase() + data.bodyPart.slice(1)
+          }</p>
+          <p class="exercises__workout-info-target">Target: ${
+            data.target[0].toUpperCase() + data.target.slice(1)
+          }</p>
+        </div>
+  `;
+}
+
+function onExercisesCardClick(event) {
+  setWorkoutCardsAndGetResponse(event.target.dataset.name);
+  currentCard = event.target.dataset.name;
+  toggleExercisesSection();
+}
+
+function toggleExercisesSection() {
+  const exercises = document.querySelector('.exercises__cards');
+  const workout = document.querySelector('.exercises-workout__cards');
+
+  exercises.hidden = !exercises.hidden;
+  workout.hidden = !workout.hidden;
+
+  currentExercisesPageState = !exercises.hidden ? 'filters' : 'workout';
+
+  const search = document.querySelector('.exercises__search');
+  search.hidden = !search.hidden;
+
+  if (currentExercisesPageState === 'workout') {
+    document
+      .querySelector('.exercises__header')
+      .style.setProperty('--after-content', `" / ${currentCard}"`);
+  } else if (currentExercisesPageState === 'filters') {
+    document
+      .querySelector('.exercises__header')
+      .style.setProperty('--after-content', `""`);
+  } else {
+    throw new Error('Зламався currentExercisesPageState');
+  }
+}
+
+function onWorkoutCardClick(event) {}
+
+// GLOBALS
+
+// зберігає кількість карток для exercises
+let cardsLimit = 12;
+
+// Зберігає поточний стан пагінації
+const paginationState = {
+  totalPages: 1,
+  page: 1,
+  perPage: cardsLimit,
+};
+
+// показує, яка секція зараз показується в exercises
+// значення: filters, workout
+let currentExercisesPageState = 'filters';
+
+// Зберігає поточний стан глобального фільтру
+// значення: Muscles, Equipment, Body%20parts
+let currentFilter = document.querySelector('.exercises__filter--active').dataset
+  .filter;
+
+// зберігає значення name вибраної картки
+let currentCard = null;
 
 // EXECUTION
 
 const mobMenuBtn = document.querySelector('.header__menu-btn');
 const closeMenuBtn = document.querySelector('.mobile-menu__close-btn');
 
-let currentFilter = document.querySelector('.exercises__filter--active');
-
-// Зберігає поточний стан пагінації
-const paginationState = {
-  totalPages: 1,
-  page: 1,
-  perPage: 12,
-};
-
 if (window.innerWidth <= 365) {
   mobMenuBtn.addEventListener('click', mobMenuOpenHandler);
+
+  cardsLimit = 9;
 }
 
 setQuote();
-renderContentPage();
+setExercisesCardsAndGetResponse(cardsLimit);
+
+document.querySelectorAll('.exercises__filters').forEach(element => {
+  element.addEventListener('click', handleFilterClick);
+});
 
 document
-  .querySelector('.exercises__filters')
-  .addEventListener('click', event => {
-    handleFilterClick(event.target);
-  });
+  .querySelector('.exercises__cards')
+  .addEventListener('click', onExercisesCardClick);
 
 document
   .querySelector('.footer__subscribe')
@@ -396,3 +541,7 @@ document
     }
     emailInput.value = '';
   });
+
+document
+  .querySelector('.exercises__pagination-btns')
+  .addEventListener('click', onPaginationClick);

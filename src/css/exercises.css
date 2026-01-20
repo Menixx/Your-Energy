@@ -54,6 +54,11 @@
   align-items: center;
   flex-direction: column;
   gap: 0.54cqw; /* 2px -> 0.54cqw */
+  background: linear-gradient(rgba(17, 17, 17, 0.5), rgba(17, 17, 17, 0.5)),
+    var(--bg-img);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .exercises__card-name {
@@ -107,12 +112,21 @@
   .exercises__header {
     font-size: 5.73cqw; /* 44px -> 5.73cqw */
     line-height: 6.25cqw; /* 48px -> 6.25cqw */
+
+    grid-column-start: 1;
+    grid-column-end: 3;
   }
 
   .exercises__filters {
     width: auto;
+    height: 4.17cqw;
     justify-content: left;
     gap: 2.6cqw; /* 20px -> 2.60cqw */
+
+    justify-self: end;
+    align-self: center;
+
+    grid-row: 2;
   }
 
   .exercises__filter {
@@ -121,7 +135,7 @@
   }
 
   .exercises__filter--active::after {
-    bottom: -1.04cqw; /* -8px -> -1.04cqw */
+    bottom: -0.52cqw; /* -4px -> -1.04cqw */
     height: 0.52cqw; /* 4px -> 0.52cqw */
     border-radius: 0.26cqw; /* 2px -> 0.26cqw */
   }
@@ -129,6 +143,10 @@
   .exercises__cards {
     grid-template-columns: repeat(3, 1fr);
     gap: 4.17cqw 1.95cqw; /* 32px -> 4.17cqw, 15px -> 1.95cqw */
+
+    grid-row: 3;
+    grid-column-start: 1;
+    grid-column-end: 3;
   }
 
   .exercises__card {
@@ -139,6 +157,12 @@
   .exercises__card-name {
     font-size: 3.13cqw; /* 24px -> 3.13cqw */
     line-height: 3.13cqw; /* 24px -> 3.13cqw */
+  }
+
+  .exercises__pagination-btns {
+    grid-row: 4;
+    grid-column-start: 1;
+    grid-column-end: 3;
   }
 
   .exercises__pagination-btn {
@@ -181,7 +205,7 @@
     align-self: end;
 
     grid-row: 1;
-    grid-column: 2;
+    grid-column: 3;
   }
 
   .exercises__filter {
@@ -202,7 +226,8 @@
     justify-self: end;
 
     grid-row: 2;
-    grid-column: 2;
+    grid-column-start: 2;
+    grid-column-end: 4;
   }
 
   .exercises__card {
