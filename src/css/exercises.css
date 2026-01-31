@@ -115,6 +115,7 @@
 
     grid-column-start: 1;
     grid-column-end: 3;
+    grid-row: 1;
   }
 
   .exercises__filters {
@@ -123,10 +124,11 @@
     justify-content: left;
     gap: 2.6cqw; /* 20px -> 2.60cqw */
 
-    justify-self: end;
+    justify-self: start;
     align-self: center;
 
     grid-row: 2;
+    grid-column: 1;
   }
 
   .exercises__filter {

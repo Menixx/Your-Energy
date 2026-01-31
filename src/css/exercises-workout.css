@@ -91,9 +91,11 @@
 }
 
 .exercises__workout-start {
+  height: 6.54cqw;
+
   display: flex;
   gap: 2.18cqw; /* 8px -> 2.18cqw */
-  align-items: start;
+  align-items: center;
   justify-content: end;
 
   grid-column: 3;
@@ -147,7 +149,10 @@
     width: 35.55cqw;
     margin-top: unset;
 
+    justify-self: end;
+
     grid-row: 2;
+    grid-column: 2;
   }
 
   .exercises__search-input {
@@ -206,6 +211,7 @@
   }
 
   .exercises__workout-start {
+    height: 3.125cqw;
     gap: 1.04cqw;
   }
 
@@ -236,7 +242,7 @@
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 769px) {
   .exercises__header::after {
     font-size: 1.39cqw;
     line-height: 1.39cqw;
@@ -268,7 +274,7 @@
   }
 
   .exercises-workout__cards {
-    gap: 32px 16px;
+    gap: 2.22cqw 1.11cqw;
 
     grid-row: 2;
     grid-column-start: 2;
@@ -276,65 +282,67 @@
   }
 
   .exercises__workout-card {
-    width: 442px;
-    box-sizing: border-box;
-    padding: 16px;
-    border-radius: 15px;
+    width: 30.69cqw;
+    padding: 1.11cqw;
+    border-radius: 1.04cqw;
 
-    grid-template-columns: 76px auto auto;
+    grid-template-columns: 5.28cqw auto auto;
   }
 
   .exercises__workout-badge {
-    height: 26px;
-    font-size: 12px;
-    border-width: 1px;
-    border-radius: 15px;
-    padding: 5px 8px;
-    margin-bottom: 24px;
+    height: 1.81cqw;
+    font-size: 0.83cqw;
+    border-width: 0.07cqw;
+    border-radius: 1.04cqw;
+    padding: 0.35cqw 0.56cqw;
+    margin-bottom: 1.67cqw;
   }
 
   .exercises__workout-grade {
-    height: 26px;
-    margin-left: 16px;
+    height: 1.81cqw;
+    margin-left: 1.11cqw;
 
-    gap: 2px;
+    gap: 0.14cqw;
   }
 
   .exercises__workout-grade-value {
-    font-size: 12px;
+    font-size: 0.83cqw;
   }
 
   .exercises__workout-grade-star {
-    width: 18px;
+    width: 1.25cqw;
   }
 
   .exercises__workout-start {
-    gap: 8px;
+    height: 1.67cqw;
+    font-size: 1.11cqw;
+    line-height: 1.67cqw;
+    gap: 0.56cqw;
   }
 
   .exercises__workout-start-arrow {
-    width: 16px;
+    width: 1.11cqw;
   }
 
   .exercises__workout-header {
-    margin-bottom: 8px;
+    margin-bottom: 0.56cqw;
 
-    gap: 16px;
+    gap: 1.11cqw;
   }
 
   .exercises__workout-header-name {
-    font-size: 24px;
-    line-height: 32px;
+    font-size: 1.67cqw;
+    line-height: 2.22cqw;
   }
 
   .exercises__workout-header-img {
-    width: 24px;
-    height: 24px;
+    width: 1.67cqw;
+    height: 1.67cqw;
   }
 
   .exercises__workout-info {
-    font-size: 12px;
+    font-size: 0.83cqw;
 
-    gap: 16px;
+    gap: 1.11cqw;
   }
 }

@@ -11,6 +11,7 @@
 @import url('./animations.css'); */
 
 /* Sections style */
+@import url('./pop-up.css');
 @import url('./mobile-menu.css');
 @import url('./main-menu.css');
 @import url('./socials.css');

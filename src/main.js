@@ -145,8 +145,8 @@ function openMobMenu(mobMenuBtn) {
 
   closeMenuBtn.addEventListener('click', closeMobMenu);
 
-  const modal = document.querySelector('.modal');
-  modal.classList.toggle('modal--hidden');
+  const menu = document.querySelector('.mobile-menu-wrapper');
+  menu.hidden = !menu.hidden;
 }
 
 function closeMobMenu() {
@@ -155,8 +155,8 @@ function closeMobMenu() {
 
   mobMenuBtn.addEventListener('click', closeMobMenu);
 
-  const modal = document.querySelector('.modal');
-  modal.classList.toggle('modal--hidden');
+  const menu = document.querySelector('.mobile-menu-wrapper');
+  menu.hidden = !menu.hidden;
 }
 
 function mobMenuOpenHandler() {
@@ -392,6 +392,7 @@ async function setWorkoutCardsAndGetResponse(name, limit = 12, page = 1) {
       const card = document.createElement('li');
       card.classList.add('exercises__workout-card');
       card.innerHTML = getWorkoutCardHTML(item);
+      card.dataset.id = item._id;
 
       fragment.appendChild(card);
     }
@@ -473,20 +474,111 @@ function toggleExercisesSection() {
     document
       .querySelector('.exercises__header')
       .style.setProperty('--after-content', `" / ${currentCard}"`);
+
+    document
+      .querySelector('.exercises__cards')
+      .removeEventListener('click', onExercisesCardClick);
+
+    document
+      .querySelector('.exercises-workout__cards')
+      .addEventListener('click', onWorkoutCardClick);
   } else if (currentExercisesPageState === 'filters') {
     document
       .querySelector('.exercises__header')
       .style.setProperty('--after-content', `""`);
+
+    document
+      .querySelector('.exercises__cards')
+      .addEventListener('click', onExercisesCardClick);
+
+    document
+      .querySelector('.exercises-workout__cards')
+      .removeEventListener('click', onWorkoutCardClick);
   } else {
     throw new Error('Зламався currentExercisesPageState');
   }
 }
 
-function onWorkoutCardClick(event) {}
+function onClosePopUpClick(event) {
+  if (event.target.classList.contains('pop-up__close-btn')) {
+    const popUp = document.querySelector('.pop-up-wrapper');
+    popUp.hidden = true;
+
+    const img = document.querySelector('.pop-up__img');
+    const h2 = document.querySelector('.pop-up__h2');
+    const grade = document.querySelector('.pop-up__grade-value');
+    const stars = document.querySelectorAll('.pop-up__grade-star');
+    const metrics = document.querySelectorAll('.pop-up__metrics-p');
+    const summary = document.querySelector('.pop-up__summary');
+
+    img.src = '';
+    h2.textContent = '';
+    grade.textContent = '';
+    summary.textContent = '';
+
+    const closeBtn = document.querySelector('.pop-up__close-btn');
+    closeBtn.removeEventListener('click', onClosePopUpClick);
+  }
+}
+
+function onWorkoutCardClick(event) {
+  const target = event.target.closest('.exercises__workout-card');
+
+  if (!target) return;
+
+  renderPopUp(target.dataset.id);
+
+  const popUp = document.querySelector('.pop-up-wrapper');
+  popUp.hidden = false;
+
+  // const closeBtn = document.querySelector('.pop-up__close-btn');
+  popUp.addEventListener('click', onClosePopUpClick);
+}
+
+async function renderPopUp(id) {
+  const url = 'https://your-energy.b.goit.study/api/exercises/' + id;
+  const response = await fetch(url);
+
+  if (!response.ok) {
+    throw new Error('Помилка');
+  }
+
+  const data = await response.json();
+
+  const img = document.querySelector('.pop-up__img');
+  const h2 = document.querySelector('.pop-up__h2');
+  const grade = document.querySelector('.pop-up__grade-value');
+  const stars = document.querySelectorAll('.pop-up__grade-star');
+  const metrics = document.querySelectorAll('.pop-up__metrics-p');
+  const summary = document.querySelector('.pop-up__summary');
+
+  img.src = data.gifUrl;
+  h2.textContent = data.name[0].toUpperCase() + data.name.substring(1);
+  grade.textContent = data.rating;
+  summary.textContent = data.description;
+
+  stars.forEach((star, index) => {
+    if (index + 1 > Math.ceil(data.rating)) {
+      star.src = './img/Star-dark.png';
+    }
+  });
+
+  metrics.forEach(item => {
+    const text = String(data[item.dataset.key]);
+
+    if (item.dataset.key === 'burnedCalories') {
+      item.textContent = `${data.burnedCalories}/${data.time} min`;
+      return;
+    }
+
+    item.textContent = text[0].toUpperCase() + text.substring(1);
+  });
+}
 
 // GLOBALS
 
 // зберігає кількість карток для exercises
+
 let cardsLimit = 12;
 
 // Зберігає поточний стан пагінації

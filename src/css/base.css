@@ -20,6 +20,11 @@ i {
   font-style: italic;
 }
 
+a {
+  display: flex;
+  align-items: center;
+}
+
 .container {
   padding: 0 5.45cqw 0; /* 20px -> 5.45cqw */
   margin: 0 auto;
@@ -39,10 +44,6 @@ i {
   justify-content: center;
   align-items: center;
   z-index: 1000;
-}
-
-.modal--hidden {
-  display: none;
 }
 
 [hidden] {
