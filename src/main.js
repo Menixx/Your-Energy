@@ -3,7 +3,7 @@
 import starUrl from './img/star.svg';
 import startArrowUrl from './img/start-arrow.svg';
 import runDarkUrl from './img/run-dark.png';
-import starDarkUrl from './img/Star-dark.png';
+import starDarkUrl from './img/Star-dark.svg';
 
 function handleFetchResponse(response) {
   if (!response.ok) {
@@ -18,8 +18,8 @@ function getToday() {
 }
 
 async function setQuote() {
-  const quoteText = document.querySelector('.aside__quote-text');
-  const quoteAuthor = document.querySelector('.aside__quote-author');
+  const quoteText = document.querySelector('.quote-text');
+  const quoteAuthor = document.querySelector('.quote-author');
   const today = getToday();
 
   let quoteObj = null;
@@ -129,7 +129,6 @@ function openMobMenu(mobMenuBtn) {
 }
 
 function closeMobMenu() {
-  console.log(close);
   closeMenuBtn.removeEventListener('click', mobMenuCloseHandler);
 
   mobMenuBtn.addEventListener('click', closeMobMenu);

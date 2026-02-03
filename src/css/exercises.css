@@ -54,8 +54,8 @@
   align-items: center;
   flex-direction: column;
   gap: 0.54cqw; /* 2px -> 0.54cqw */
-  background: linear-gradient(rgba(17, 17, 17, 0.5), rgba(17, 17, 17, 0.5)),
-    var(--bg-img);
+  background:
+    linear-gradient(rgba(17, 17, 17, 0.5), rgba(17, 17, 17, 0.5)), var(--bg-img);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -68,6 +68,8 @@
 
 .exercises__card-filter {
   color: rgba(244, 244, 244, 0.4);
+  font-size: 3.27cqw;
+  line-height: 4.9cqw;
 }
 
 .exercises__pagination-btns {
@@ -161,6 +163,11 @@
     line-height: 3.13cqw; /* 24px -> 3.13cqw */
   }
 
+  .exercises__card-filter {
+    font-size: 1.56cqw;
+    line-height: 2.34cqw;
+  }
+
   .exercises__pagination-btns {
     grid-row: 4;
     grid-column-start: 1;
@@ -241,6 +248,11 @@
   .exercises__card-name {
     font-size: 1.67cqw;
     line-height: 1.67cqw;
+  }
+
+  .exercises__card-filter {
+    font-size: 0.83cqw;
+    line-height: 1.25cqw;
   }
 
   .exercises__pagination-btns {

@@ -3,37 +3,8 @@
   gap: 5.45cqw; /* 20px -> 5.45cqw */
 }
 
-.aside__quote {
-  position: relative;
-  background-color: var(--main-color-dark);
-  padding: 5.45cqw 5.45cqw 5.45cqw 19.62cqw; /* 20px -> 5.45cqw, 72px -> 19.62cqw */
-  border-radius: 20px;
-}
-
-.aside__quote-run-icon {
-  width: 9cqw;
-  position: absolute;
-  left: 5.45cqw; /* 20px -> 5.45cqw */
-  top: 5.45cqw; /* 20px -> 5.45cqw */
-}
-
-.aside__quote-commas-icon {
-  width: 5.45cqw; /* 20px -> 5.45cqw */
-  position: absolute;
-  right: 5.45cqw; /* 20px -> 5.45cqw */
-  top: 5.45cqw; /* 20px -> 5.45cqw */
-}
-
-.aside__quote-head {
-  font-weight: 500;
-  font-size: 5.45cqw; /* 20px -> 5.45cqw */
-  line-height: 5.45cqw; /* 20px -> 5.45cqw */
-  margin-bottom: 2.18cqw; /* 8px -> 2.18cqw */
-}
-
-.aside__quote-text {
-  color: var(--side-color-light);
-  margin-bottom: 4.36cqw; /* 16px -> 4.36cqw */
+.aside__quote-wrapper {
+  display: flex;
 }
 
 .aside-img {

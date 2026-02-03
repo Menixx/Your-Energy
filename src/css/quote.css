@@ -1,0 +1,88 @@
+.quote {
+  position: relative;
+  background-color: var(--main-color-dark);
+  padding: 5.45cqw 5.45cqw 5.45cqw 19.62cqw; /* 20px -> 5.45cqw, 72px -> 19.62cqw */
+  border-radius: 5.45cqw;
+}
+
+.quote-run-icon {
+  width: 9cqw;
+  position: absolute;
+  left: 5.45cqw; /* 20px -> 5.45cqw */
+  top: 5.45cqw; /* 20px -> 5.45cqw */
+}
+
+.quote-commas-icon {
+  width: 5.45cqw; /* 20px -> 5.45cqw */
+  position: absolute;
+  right: 5.45cqw; /* 20px -> 5.45cqw */
+  top: 5.45cqw; /* 20px -> 5.45cqw */
+}
+
+.quote-head {
+  font-weight: 500;
+  font-size: 5.45cqw; /* 20px -> 5.45cqw */
+  line-height: 5.45cqw; /* 20px -> 5.45cqw */
+  margin-bottom: 2.18cqw; /* 8px -> 2.18cqw */
+}
+
+.quote-text {
+  color: var(--side-color-light);
+  margin-bottom: 4.36cqw; /* 16px -> 4.36cqw */
+}
+
+@media (min-width: 368px) {
+  .quote {
+    padding: 5.21cqw 5.21cqw 5.21cqw 11.72cqw; /* 40px -> 5.21cqw, 90px -> 11.72cqw (768px container) */
+    border-radius: 2.6cqw; /* 20px -> 2.60cqw (768px container) */
+  }
+
+  .quote-head {
+    font-size: 3.13cqw;
+    line-height: 4.17cqw;
+    margin-bottom: 1.04cqw; /* 8px -> 1.04cqw (768px container) */
+  }
+
+  .quote-run-icon {
+    left: 5.21cqw; /* 40px -> 5.21cqw (768px container) */
+    top: 5.21cqw; /* 40px -> 5.21cqw (768px container) */
+    width: 5.08cqw; /* 39px -> 5.08cqw (768px container) */
+  }
+
+  .quote-commas-icon {
+    width: 3.13cqw; /* 24px -> 3.13cqw (768px container) */
+    top: 5.21cqw; /* 40px -> 5.21cqw (768px container) */
+    right: 5.21cqw; /* 40px -> 5.21cqw (768px container) */
+  }
+}
+
+@media (min-width: 769px) {
+  .quote {
+    padding: 2.78cqw 2.78cqw 2.78cqw 6.25cqw; /* 40px -> 2.78cqw, 90px -> 6.25cqw (1440px container) */
+    border-radius: 1.39cqw; /* 20px -> 1.39cqw (1440px container) */
+    box-sizing: border-box;
+    min-height: 16.81cqw; /* 242px -> 16.81cqw (1440px container) */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .quote-head {
+    font-size: 1.39cqw; /* 20px -> 1.39cqw (1440px container) */
+    line-height: 1.39cqw; /* 20px -> 1.39cqw (1440px container) */
+    margin-bottom: 0.56cqw; /* 8px -> 0.56cqw (1440px container) */
+  }
+
+  .quote-run-icon {
+    left: 2.78cqw; /* 40px -> 2.78cqw (1440px container) */
+    top: 2.78cqw; /* 40px -> 2.78cqw (1440px container) */
+    width: 2.36cqw; /* 34px -> 2.36cqw (1440px container) */
+  }
+
+  .quote-commas-icon {
+    width: 1.67cqw; /* 24px -> 1.67cqw (1440px container) */
+    top: 2.78cqw; /* 40px -> 2.78cqw (1440px container) */
+    right: 2.78cqw; /* 40px -> 2.78cqw (1440px container) */
+  }
+}
