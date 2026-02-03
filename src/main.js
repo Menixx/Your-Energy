@@ -368,6 +368,11 @@ function handlePagination(pagValue) {
 }
 
 async function setWorkoutCardsAndGetResponse(name, limit = 12, page = 1) {
+  const keyword = document
+    .querySelector('.exercises__search-input')
+    .value.trim()
+    .toLowerCase();
+
   const url = new URL('https://your-energy.b.goit.study/api/exercises');
 
   const params = {
@@ -376,6 +381,7 @@ async function setWorkoutCardsAndGetResponse(name, limit = 12, page = 1) {
     ...(currentFilter === 'Muscles' && { muscles: name }),
     ...(currentFilter === 'Equipment' && { equipment: name }),
     ...(currentFilter === 'Body%20parts' && { bodypart: name }),
+    keyword,
   };
 
   url.search = new URLSearchParams(params).toString();
@@ -384,19 +390,7 @@ async function setWorkoutCardsAndGetResponse(name, limit = 12, page = 1) {
     const response = await fetch(url.toString());
     const data = await response.json();
 
-    const cards = document.querySelector('.exercises-workout__cards');
-    cards.innerHTML = '';
-    const fragment = document.createDocumentFragment();
-
-    for (let item of data.results) {
-      const card = document.createElement('li');
-      card.classList.add('exercises__workout-card');
-      card.innerHTML = getWorkoutCardHTML(item);
-      card.dataset.id = item._id;
-
-      fragment.appendChild(card);
-    }
-    cards.appendChild(fragment);
+    setWorkoutCards(data.results);
 
     paginationState.page = data.page;
     paginationState.perPage = data.perPage;
@@ -409,53 +403,102 @@ async function setWorkoutCardsAndGetResponse(name, limit = 12, page = 1) {
   }
 }
 
-function getWorkoutCardHTML(data) {
-  return `
-        <p class="exercises__workout-badge">WORKOUT</p>
-        <div class="exercises__workout-grade">
-          <p class="exercises__workout-grade-value">${data.rating}</p>
-          <img
-            class="exercises__workout-grade-star"
-            src="../img/star.svg"
-            alt="Star icon"
-          />
-        </div>
-        <div class="exercises__workout-start">
-          <p class="exercises__workout-start-text">Start</p>
-          <img
-            src="../img/start-arrow.svg"
-            alt="Arrow icon"
-            class="exercises__workout-start-arrow"
-          />
-        </div>
-        <div class="exercises__workout-header">
-          <img
-            class="exercises__workout-header-img"
-            src="../img/run-dark.png"
-            alt="Run icon"
-          />
-          <h3 class="exercises__workout-header-name">${
-            data.name[0].toUpperCase() + data.name.slice(1)
-          }</h3>
-        </div>
-        <div class="exercises__workout-info">
-          <p class="exercises__workout-info-calories">Burned calories: ${
-            data.burnedCalories
-          }/${data.time}</p>
-          <p class="exercises__workout-info-body-part">Body part: ${
-            data.bodyPart[0].toUpperCase() + data.bodyPart.slice(1)
-          }</p>
-          <p class="exercises__workout-info-target">Target: ${
-            data.target[0].toUpperCase() + data.target.slice(1)
-          }</p>
-        </div>
-  `;
+function setWorkoutCards(set) {
+  const cards = document.querySelector('.exercises-workout__cards');
+  cards.innerHTML = '';
+  const fragment = document.createDocumentFragment();
+
+  for (let item of set) {
+    const card = document.createElement('li');
+    card.classList.add('exercises__workout-card');
+    card.dataset.data = JSON.stringify(item);
+
+    const badge = document.createElement('p');
+    badge.className = 'exercises__workout-badge';
+    badge.textContent = 'WORKOUT';
+
+    const grade = document.createElement('div');
+    grade.className = 'exercises__workout-grade';
+    const gradeValue = document.createElement('p');
+    gradeValue.className = 'exercises__workout-grade-value';
+    gradeValue.textContent = item.rating;
+    const gradeStar = document.createElement('img');
+    gradeStar.className = 'exercises__workout-grade-star';
+    gradeStar.src = '../img/star.svg';
+    gradeStar.alt = 'Star icon';
+    grade.appendChild(gradeValue);
+    grade.appendChild(gradeStar);
+
+    const start = document.createElement('div');
+    start.className = 'exercises__workout-start';
+    const startText = document.createElement('p');
+    startText.className = 'exercises__workout-start-text';
+    startText.textContent = 'Start';
+    const startArrow = document.createElement('img');
+    startArrow.className = 'exercises__workout-start-arrow';
+    startArrow.src = '../img/start-arrow.svg';
+    startArrow.alt = 'Arrow icon';
+    start.appendChild(startText);
+    start.appendChild(startArrow);
+
+    const header = document.createElement('div');
+    header.className = 'exercises__workout-header';
+    const headerImg = document.createElement('img');
+    headerImg.className = 'exercises__workout-header-img';
+    headerImg.src = '../img/run-dark.png';
+    headerImg.alt = 'Run icon';
+    const headerName = document.createElement('h3');
+    headerName.className = 'exercises__workout-header-name';
+    headerName.textContent =
+      item.name[0].toUpperCase() + (item.name.slice ? item.name.slice(1) : '');
+    header.appendChild(headerImg);
+    header.appendChild(headerName);
+
+    const info = document.createElement('div');
+    info.className = 'exercises__workout-info';
+    const calories = document.createElement('p');
+    calories.className = 'exercises__workout-info-calories';
+    calories.textContent = `Burned calories: ${item.burnedCalories}/${item.time}`;
+    const bodyPart = document.createElement('p');
+    bodyPart.className = 'exercises__workout-info-body-part';
+    bodyPart.textContent =
+      'Body part: ' +
+      (item.bodyPart
+        ? item.bodyPart[0].toUpperCase() + item.bodyPart.slice(1)
+        : '');
+    const target = document.createElement('p');
+    target.className = 'exercises__workout-info-target';
+    target.textContent =
+      'Target: ' +
+      (item.target ? item.target[0].toUpperCase() + item.target.slice(1) : '');
+    info.appendChild(calories);
+    info.appendChild(bodyPart);
+    info.appendChild(target);
+
+    card.appendChild(badge);
+    card.appendChild(grade);
+    card.appendChild(start);
+    card.appendChild(header);
+    card.appendChild(info);
+
+    fragment.appendChild(card);
+  }
+
+  cards.appendChild(fragment);
 }
 
+// getWorkoutCardHTML removed — card elements are created via DOM APIs in setWorkoutCards
+
 function onExercisesCardClick(event) {
-  setWorkoutCardsAndGetResponse(event.target.dataset.name);
-  currentCard = event.target.dataset.name;
-  toggleExercisesSection();
+  const card = event.target.closest('.exercises__card');
+  if (event.target.closest('.exercises__card')) {
+    const search = document.querySelector('.exercises__search-input');
+    search.value = '';
+
+    setWorkoutCardsAndGetResponse(card.dataset.name);
+    currentCard = card.dataset.name;
+    toggleExercisesSection();
+  }
 }
 
 function toggleExercisesSection() {
@@ -499,40 +542,63 @@ function toggleExercisesSection() {
   }
 }
 
-function onClosePopUpClick(event) {
-  if (event.target.classList.contains('pop-up__close-btn')) {
-    const popUp = document.querySelector('.pop-up-wrapper');
-    popUp.hidden = true;
+function onClosePopUpClick() {
+  const popUpWrapper = document.querySelector('.pop-up-wrapper');
+  popUpWrapper.hidden = true;
 
-    const img = document.querySelector('.pop-up__img');
-    const h2 = document.querySelector('.pop-up__h2');
-    const grade = document.querySelector('.pop-up__grade-value');
-    const stars = document.querySelectorAll('.pop-up__grade-star');
-    const metrics = document.querySelectorAll('.pop-up__metrics-p');
-    const summary = document.querySelector('.pop-up__summary');
+  const popUp = document.querySelector('.pop-up');
+  popUp.dataset.currentExerciseData = '#';
 
-    img.src = '';
-    h2.textContent = '';
-    grade.textContent = '';
-    summary.textContent = '';
-
-    const closeBtn = document.querySelector('.pop-up__close-btn');
-    closeBtn.removeEventListener('click', onClosePopUpClick);
+  if (window.innerWidth > 367) {
+    popUp.style.width = '191.77cqw';
   }
+  if (window.innerWidth > 768) {
+    popUp.style.width = '49.17cqw';
+  }
+
+  const img = document.querySelector('.pop-up__img');
+  const h2 = document.querySelector('.pop-up__h2');
+  const grade = document.querySelector('.pop-up__grade-value');
+  // const stars = document.querySelectorAll('.pop-up__grade-star');
+  // const metrics = document.querySelectorAll('.pop-up__metrics-p');
+  const summary = document.querySelector('.pop-up__summary');
+
+  img.src = '';
+  h2.textContent = '';
+  grade.textContent = '';
+  summary.textContent = '';
+
+  popUp.removeEventListener('click', onPopUpClick);
+
+  const valueP = document.querySelector('.pop-up__grade-value');
+  valueP.textContent = '0.0';
+  valueP.dataset.value = 0;
+
+  const ratingStars = document.querySelectorAll('.pop-up__grade-star-rating');
+  ratingStars.forEach(star => {
+    star.src = './img/Star-dark.png';
+  });
 }
 
 function onWorkoutCardClick(event) {
+  const main = document.querySelector('.pop-up__main-content-wrapper');
+  const rating = document.querySelector('.pop-up__rating');
+
+  main.hidden = false;
+  rating.hidden = true;
+
   const target = event.target.closest('.exercises__workout-card');
 
   if (!target) return;
 
-  renderPopUp(target.dataset.id);
+  renderPopUp(JSON.parse(target.dataset.data)._id);
 
-  const popUp = document.querySelector('.pop-up-wrapper');
-  popUp.hidden = false;
+  const popUpWrapper = document.querySelector('.pop-up-wrapper');
+  popUpWrapper.hidden = false;
+  const popUp = document.querySelector('.pop-up');
+  popUp.dataset.currentExerciseData = target.dataset.data;
 
-  // const closeBtn = document.querySelector('.pop-up__close-btn');
-  popUp.addEventListener('click', onClosePopUpClick);
+  popUp.addEventListener('click', onPopUpClick);
 }
 
 async function renderPopUp(id) {
@@ -575,10 +641,105 @@ async function renderPopUp(id) {
   });
 }
 
+function onPopUpClick(event) {
+  if (event.target.closest('.pop-up__close-btn')) {
+    onClosePopUpClick();
+  } else if (event.target.closest('.pop-up__btn-rating')) {
+    openRatingForm();
+
+    const email = document.querySelector('.pop-up__rating-email');
+    const text = document.querySelector('.pop-up__rating-text');
+
+    text.style.borderColor = 'var(--main-color-leight)';
+    email.style.borderColor = 'var(--main-color-leight)';
+  } else if (event.target.closest('.pop-up__grade-star-rating')) {
+    setRatingValue(event.target.dataset.starKey);
+  } else if (event.target.closest('.pop-up__rating-btn')) {
+    event.preventDefault();
+    sendRatingForm();
+  }
+}
+
+async function sendRatingForm() {
+  const popUp = document.querySelector('.pop-up');
+  const email = document.querySelector('.pop-up__rating-email');
+  const text = document.querySelector('.pop-up__rating-text');
+  const gradeVal = document.querySelector('.pop-up__rating-grade-value');
+
+  if (!email.checkValidity() || !text.value) {
+    text.style.borderColor = 'red';
+    email.style.borderColor = 'red';
+    return;
+  }
+
+  const body = {
+    rate: Number(gradeVal.dataset.value),
+    email: email.value.trim(),
+    review: text.value.trim(),
+  };
+
+  try {
+    const response = await fetch(
+      `https://your-energy.b.goit.study/api/exercises/${JSON.parse(popUp.dataset.currentExerciseData)._id}/rating`,
+      {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(body),
+      }
+    );
+
+    if (!response.ok) throw new Error('Халепа');
+
+    const data = await response.json();
+  } catch (err) {
+    throw err;
+  }
+}
+
+function openRatingForm() {
+  const main = document.querySelector('.pop-up__main-content-wrapper');
+  const rating = document.querySelector('.pop-up__rating');
+
+  main.hidden = true;
+  rating.hidden = false;
+
+  const valueP = document.querySelector('.pop-up__rating-grade-value');
+  valueP.textContent = '0.0';
+  valueP.dataset.value = 0;
+
+  const popUp = document.querySelector('.pop-up');
+  if (window.innerWidth > 367) {
+    popUp.style.width = '55.99cqw';
+  }
+  if (window.innerWidth > 768) {
+    popUp.style.width = '29.86cqw';
+  }
+}
+
+function setRatingValue(starKey) {
+  const valueP = document.querySelector('.pop-up__rating-grade-value');
+  valueP.textContent = starKey + `.0`;
+  valueP.dataset.value = Number(starKey);
+
+  const stars = document.querySelectorAll('.pop-up__grade-star-rating');
+  stars.forEach((star, index) => {
+    if (index < Number(starKey)) {
+      star.src = './img/star.svg';
+    } else {
+      star.src = './img/Star-dark.png';
+    }
+  });
+}
+
+function onSearch() {
+  setWorkoutCardsAndGetResponse(currentCard);
+}
+
 // GLOBALS
 
 // зберігає кількість карток для exercises
-
 let cardsLimit = 12;
 
 // Зберігає поточний стан пагінації
@@ -605,7 +766,7 @@ let currentCard = null;
 const mobMenuBtn = document.querySelector('.header__menu-btn');
 const closeMenuBtn = document.querySelector('.mobile-menu__close-btn');
 
-if (window.innerWidth <= 365) {
+if (window.innerWidth <= 367) {
   mobMenuBtn.addEventListener('click', mobMenuOpenHandler);
 
   cardsLimit = 9;
@@ -637,3 +798,11 @@ document
 document
   .querySelector('.exercises__pagination-btns')
   .addEventListener('click', onPaginationClick);
+
+document
+  .querySelector('.exercises__search-input')
+  .addEventListener('search', onSearch);
+
+document
+  .querySelector('.exercises__search-input')
+  .addEventListener('search', onSearch);
