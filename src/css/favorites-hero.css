@@ -1,0 +1,143 @@
+.favorites-hero {
+  margin-top: 21.79cqw; /* 80px -> 21.79cqw (367px container) */
+  margin-bottom: 10.9cqw; /* 40px -> 10.90cqw (367px container) */
+
+  display: flex;
+  flex-direction: column;
+  gap: 5.45cqw; /* 20px -> 5.45cqw (367px container) */
+}
+
+.favorites-hero__head {
+  font-size: 7.63cqw; /* 28px -> 7.63cqw (367px container) */
+  line-height: 10.35cqw; /* 38px -> 10.35cqw (367px container) */
+  letter-spacing: -2%;
+  color: var(--main-color-dark);
+}
+
+.favorites-hero__fact {
+  padding: 5.45cqw; /* 20px -> 5.45cqw (367px container) */
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 5.45cqw; /* 20px -> 5.45cqw (367px container) */
+}
+
+.favorites-hero__fact-icon {
+  width: 5.45cqw; /* 20px -> 5.45cqw (367px container) */
+  margin-bottom: 4.36cqw; /* 16px -> 4.36cqw (367px container) */
+}
+
+.favorites-hero__fact-h2 {
+  font-weight: 500;
+  font-size: 5.45cqw; /* 20px -> 5.45cqw (367px container) */
+  line-height: 5.45cqw; /* 20px -> 5.45cqw (367px container) */
+  color: var(--main-color-dark);
+  margin-bottom: 1.64cqw; /* 6px -> 1.64cqw (367px container) */
+}
+
+.favorites-hero__fact-p {
+  font-size: 3.82cqw; /* 14px -> 3.82cqw (367px container) */
+  line-height: 4.9cqw; /* 18px -> 4.90cqw (367px container) */
+  color: var(--side-color-dark);
+}
+
+.favorites-hero__img {
+  border-radius: 5.45cqw; /* 20px -> 5.45cqw (367px container) */
+  object-fit: cover;
+}
+
+@media (min-width: 368px) {
+  .favorites-hero {
+    margin-bottom: 10.9cqw; /* 40px -> 10.90cqw (768px container) */
+
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1.82cqw; /* 14px -> 1.82cqw (768px container) */
+  }
+
+  .favorites-hero__head {
+    font-size: 28px;
+    line-height: 38px;
+  }
+
+  .favorites-hero__quote-wrapper {
+    width: 91.67cqw; /* 704px -> 91.67cqw (768px container) */
+  }
+
+  .favorites-hero__fact {
+    width: 44.79cqw; /* 344px -> 44.79cqw (768px container) */
+    padding: 2.6cqw; /* 20px -> 2.60cqw (768px container) */
+    border-radius: 2.6cqw; /* 20px -> 2.60cqw (768px container) */
+    box-sizing: border-box;
+  }
+
+  .favorites-hero__fact-icon {
+    width: 2.6cqw; /* 20px -> 2.60cqw (768px container) */
+    margin-bottom: 2.08cqw; /* 16px -> 2.08cqw (768px container) */
+  }
+
+  .favorites-hero__fact-h2 {
+    font-size: 2.6cqw; /* 20px -> 2.60cqw (768px container) */
+    line-height: 2.6cqw; /* 20px -> 2.60cqw (768px container) */
+    margin-bottom: 0.78cqw; /* 6px -> 0.78cqw (768px container) */
+  }
+
+  .favorites-hero__fact-p {
+    font-size: 1.82cqw; /* 14px -> 1.82cqw (768px container) */
+    line-height: 2.34cqw; /* 18px -> 2.34cqw (768px container) */
+  }
+
+  .favorites-hero__img {
+    border-radius: 2.6cqw; /* 20px -> 2.60cqw (768px container) */
+    width: 44.79cqw; /* 344px -> 44.79cqw (768px container) */
+  }
+}
+
+@media (min-width: 769px) {
+  .favorites-hero {
+    margin-top: 6.53cqw;
+    margin-bottom: unset;
+    width: 34.31cqw; /* 494px -> 34.31cqw (1440px container) */
+    height: 26.88cqw; /* 387px -> 26.88cqw (1440px container) */
+    box-sizing: border-box;
+
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1.82cqw; /* 14px -> 1.82cqw (1440px container) */
+  }
+
+  .favorites-hero__head {
+    font-size: 28px;
+    line-height: 38px;
+    height: 3.33cqw; /* 48px -> 3.33cqw (1440px container) */
+  }
+
+  .favorites-hero__quote-wrapper {
+    width: 48.89cqw; /* 704px -> 48.89cqw (1440px container) */
+  }
+
+  .favorites-hero__fact {
+    width: 16.1cqw; /* 239px -> 16.60cqw (1440px container) */
+    padding: 1.39cqw; /* 20px -> 1.39cqw (1440px container) */
+    border-radius: 1.39cqw; /* 20px -> 1.39cqw (1440px container) */
+  }
+
+  .favorites-hero__fact-icon {
+    width: 1.39cqw; /* 20px -> 1.39cqw (1440px container) */
+    margin-bottom: 1.11cqw; /* 16px -> 1.11cqw (1440px container) */
+  }
+
+  .favorites-hero__fact-h2 {
+    font-size: 1.39cqw; /* 20px -> 1.39cqw (1440px container) */
+    line-height: 1.39cqw; /* 20px -> 1.39cqw (1440px container) */
+    margin-bottom: 0.42cqw; /* 6px -> 0.42cqw (1440px container) */
+  }
+
+  .favorites-hero__fact-p {
+    font-size: 0.97cqw; /* 14px -> 0.97cqw (1440px container) */
+    line-height: 1.25cqw; /* 18px -> 1.25cqw (1440px container) */
+  }
+
+  .favorites-hero__img {
+    border-radius: 1.39cqw; /* 20px -> 1.39cqw (1440px container) */
+    width: 16.1cqw; /* 239px -> 16.60cqw (1440px container) */
+  }
+}

@@ -1,0 +1,11 @@
+.favorites__main-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 769px) {
+  .favorites__main-wrapper {
+    flex-direction: row;
+    gap: 2.22cqw; /* 32px -> 2.22cqw (1440px container) */
+  }
+}

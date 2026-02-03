@@ -20,9 +20,20 @@
 
     <div class="container">
       <load src="./partials/header.html" />
-      <main></main>
+      <main>
+        <div class="favorites__main-wrapper">
+          <load src="./partials/favorites-hero.html" />
+          <section class="favorites-saved">
+            <p class="favorites-saved__p">
+              It appears that you haven't added any exercises to your favorites
+              yet. To get started, you can add exercises that you like to your
+              favorites for easier access in the future.
+            </p>
+          </section>
+        </div>
+      </main>
     </div>
 
-    <script type="module" src="./favorites.js"></script>
+    <script type="module" src="./main.js"></script>
   </body>
 </html>

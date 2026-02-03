@@ -465,8 +465,6 @@ function setWorkoutCards(set) {
   cards.appendChild(fragment);
 }
 
-// getWorkoutCardHTML removed — card elements are created via DOM APIs in setWorkoutCards
-
 function onExercisesCardClick(event) {
   const card = event.target.closest('.exercises__card');
   if (event.target.closest('.exercises__card')) {
@@ -633,6 +631,21 @@ function onPopUpClick(event) {
   } else if (event.target.closest('.pop-up__rating-btn')) {
     event.preventDefault();
     sendRatingForm();
+  } else if (event.target.closest('.pop-up__btn-fav')) {
+    event.preventDefault();
+    addToFavorites();
+  }
+}
+
+function addToFavorites() {
+  const popUp = document.querySelector('.pop-up');
+  let list = JSON.parse(localStorage.getItem('favorites')) || [];
+
+  let data = popUp.dataset.currentExerciseData;
+
+  if (!list.includes(data)) {
+    list.push(data);
+    localStorage.setItem('favorites', JSON.stringify(list));
   }
 }
 
@@ -668,7 +681,10 @@ async function sendRatingForm() {
 
     if (!response.ok) throw new Error('Халепа');
 
-    const data = await response.json();
+    text.style.borderColor = 'green';
+    email.style.borderColor = 'green';
+    text.value = '';
+    email.value = '';
   } catch (err) {
     throw err;
   }
@@ -713,6 +729,114 @@ function onSearch() {
   setWorkoutCardsAndGetResponse(currentCard);
 }
 
+function setSavedExercises() {
+  const saved = document.querySelector('.favorites-saved');
+  const list = JSON.parse(localStorage.getItem('favorites'));
+
+  if (list.length === 0) return;
+
+  saved.innerHTML = '';
+  const fragment = document.createDocumentFragment();
+
+  for (let item of list) {
+    item = JSON.parse(item);
+
+    const card = document.createElement('li');
+    card.classList.add('favorites__card');
+    card.dataset.data = JSON.stringify(item);
+
+    const badge = document.createElement('p');
+    badge.className = 'exercises__workout-badge';
+    badge.textContent = 'WORKOUT';
+
+    const remove = document.createElement('img');
+    remove.src = 'img/remove-from-fav.svg';
+    remove.className = 'favorites__remove';
+
+    const start = document.createElement('div');
+    start.className = 'exercises__workout-start';
+    const startText = document.createElement('p');
+    startText.className = 'exercises__workout-start-text';
+    startText.textContent = 'Start';
+    const startArrow = document.createElement('img');
+    startArrow.className = 'exercises__workout-start-arrow';
+    startArrow.src = startArrowUrl;
+    startArrow.alt = 'Arrow icon';
+    start.appendChild(startText);
+    start.appendChild(startArrow);
+
+    const header = document.createElement('div');
+    header.className = 'exercises__workout-header';
+    const headerImg = document.createElement('img');
+    headerImg.className = 'exercises__workout-header-img';
+    headerImg.src = runDarkUrl;
+    headerImg.alt = 'Run icon';
+    const headerName = document.createElement('h3');
+    headerName.className = 'exercises__workout-header-name';
+    headerName.textContent =
+      item.name[0].toUpperCase() + (item.name.slice ? item.name.slice(1) : '');
+    header.appendChild(headerImg);
+    header.appendChild(headerName);
+
+    const info = document.createElement('div');
+    info.className = 'exercises__workout-info';
+    const calories = document.createElement('p');
+    calories.className = 'exercises__workout-info-calories';
+    calories.textContent = `Burned calories: ${item.burnedCalories}/${item.time}`;
+    const bodyPart = document.createElement('p');
+    bodyPart.className = 'exercises__workout-info-body-part';
+    bodyPart.textContent =
+      'Body part: ' +
+      (item.bodyPart
+        ? item.bodyPart[0].toUpperCase() + item.bodyPart.slice(1)
+        : '');
+    const target = document.createElement('p');
+    target.className = 'exercises__workout-info-target';
+    target.textContent =
+      'Target: ' +
+      (item.target ? item.target[0].toUpperCase() + item.target.slice(1) : '');
+    info.appendChild(calories);
+    info.appendChild(bodyPart);
+    info.appendChild(target);
+
+    card.appendChild(badge);
+    card.appendChild(remove);
+    card.appendChild(start);
+    card.appendChild(header);
+    card.appendChild(info);
+
+    fragment.appendChild(card);
+  }
+
+  saved.appendChild(fragment);
+}
+
+function onSavedClick(event) {
+  if (event.target.closest('.favorites__remove')) {
+    const item = event.target.closest('.favorites__card').dataset.data;
+    const list = JSON.parse(localStorage.getItem('favorites'));
+
+    let i = list.indexOf(item);
+    list.splice(i, 1);
+
+    localStorage.setItem('favorites', JSON.stringify(list));
+
+    setSavedExercises();
+
+    if (list.length === 0) {
+      const saved = document.querySelector('.favorites-saved');
+      saved.innerHTML = '';
+
+      const p = document.createElement('p');
+      p.className = 'favorites-saved__p';
+      p.textContent =
+        "It appears that you haven't added any exercises to your favorites yet. To get started, you can add exercises that you like to your favorites for easier access in the future.";
+
+      saved.appendChild(p);
+    }
+  }
+}
+
 // GLOBALS
 
 // зберігає кількість карток для exercises
@@ -730,9 +854,9 @@ const paginationState = {
 let currentExercisesPageState = 'filters';
 
 // Зберігає поточний стан глобального фільтру
-// значення: Muscles, Equipment, Body%20parts
-let currentFilter = document.querySelector('.exercises__filter--active').dataset
-  .filter;
+// значення: Muscles, Equipment, Body%20 parts
+const activeFilterEl = document.querySelector('.exercises__filter--active');
+let currentFilter = activeFilterEl ? activeFilterEl.dataset.filter : 'Muscles';
 
 // зберігає значення name вибраної картки
 let currentCard = null;
@@ -741,44 +865,53 @@ let currentCard = null;
 
 const mobMenuBtn = document.querySelector('.header__menu-btn');
 const closeMenuBtn = document.querySelector('.mobile-menu__close-btn');
-
-if (window.innerWidth <= 367) {
-  mobMenuBtn.addEventListener('click', mobMenuOpenHandler);
-
-  cardsLimit = 9;
+// Only add mobile menu handler if mobile menu button exists
+if (mobMenuBtn && closeMenuBtn) {
+  if (window.innerWidth <= 367) {
+    mobMenuBtn.addEventListener('click', mobMenuOpenHandler);
+    cardsLimit = 9;
+  }
 }
 
 setQuote();
-setExercisesCardsAndGetResponse(cardsLimit);
 
-document.querySelectorAll('.exercises__filters').forEach(element => {
-  element.addEventListener('click', handleFilterClick);
-});
+// Initialize exercises-related UI only when exercises elements exist on the page
+const exercisesCardsEl = document.querySelector('.exercises__cards');
+if (exercisesCardsEl) {
+  setExercisesCardsAndGetResponse(cardsLimit);
 
-document
-  .querySelector('.exercises__cards')
-  .addEventListener('click', onExercisesCardClick);
+  document.querySelectorAll('.exercises__filters').forEach(element => {
+    element.addEventListener('click', handleFilterClick);
+  });
 
-document
-  .querySelector('.footer__subscribe')
-  .addEventListener('submit', event => {
+  exercisesCardsEl.addEventListener('click', onExercisesCardClick);
+
+  const paginationBtns = document.querySelector('.exercises__pagination-btns');
+  if (paginationBtns)
+    paginationBtns.addEventListener('click', onPaginationClick);
+
+  const searchInput = document.querySelector('.exercises__search-input');
+  if (searchInput) searchInput.addEventListener('search', onSearch);
+}
+
+const footerSubscribe = document.querySelector('.footer__subscribe');
+if (footerSubscribe) {
+  footerSubscribe.addEventListener('submit', event => {
     event.preventDefault();
 
     const emailInput = document.querySelector('.footer__subscribe-email');
-    if (emailInput.value) {
+    if (emailInput && emailInput.value) {
       subscribe(emailInput.value);
     }
-    emailInput.value = '';
+    if (emailInput) emailInput.value = '';
   });
+}
 
-document
-  .querySelector('.exercises__pagination-btns')
-  .addEventListener('click', onPaginationClick);
+// FAVORITES PAGE
 
-document
-  .querySelector('.exercises__search-input')
-  .addEventListener('search', onSearch);
+const saved = document.querySelector('.favorites-saved');
+if (saved) {
+  setSavedExercises();
 
-document
-  .querySelector('.exercises__search-input')
-  .addEventListener('search', onSearch);
+  saved.addEventListener('click', onSavedClick);
+}
