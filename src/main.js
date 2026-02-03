@@ -1,30 +1,9 @@
 // import { Notyf } from 'notyf';
 
-// class ExercisesCard {
-//   constructor({ name, filter, imgURL }) {
-//     this.name = name;
-//     this.filter = filter;
-//     this.imgURL = imgURL;
-//   }
-
-//   getHTML() {
-//     return `
-//       <li class="exercises__card"
-//         style="background:
-//                 linear-gradient(rgba(17, 17, 17, 0.5), rgba(17, 17, 17, 0.5)),
-//                 url(${this.imgURL});
-//               background-size: cover;
-//               background-repeat: no-repeat;
-//               background-position: center;
-//         ">
-//         <h3 class="exercises__card-name">${
-//           this.name[0].toUpperCase() + this.name.substring(1)
-//         }</h3>
-//         <p class="exercises__card-filter">${this.filter}</p>
-//       </li>
-//     `;
-//   }
-// }
+import starUrl from './img/star.svg';
+import startArrowUrl from './img/start-arrow.svg';
+import runDarkUrl from './img/run-dark.png';
+import starDarkUrl from './img/Star-dark.png';
 
 function handleFetchResponse(response) {
   if (!response.ok) {
@@ -424,7 +403,7 @@ function setWorkoutCards(set) {
     gradeValue.textContent = item.rating;
     const gradeStar = document.createElement('img');
     gradeStar.className = 'exercises__workout-grade-star';
-    gradeStar.src = 'img/star.svg';
+    gradeStar.src = starUrl;
     gradeStar.alt = 'Star icon';
     grade.appendChild(gradeValue);
     grade.appendChild(gradeStar);
@@ -436,7 +415,7 @@ function setWorkoutCards(set) {
     startText.textContent = 'Start';
     const startArrow = document.createElement('img');
     startArrow.className = 'exercises__workout-start-arrow';
-    startArrow.src = 'img/start-arrow.svg';
+    startArrow.src = startArrowUrl;
     startArrow.alt = 'Arrow icon';
     start.appendChild(startText);
     start.appendChild(startArrow);
@@ -445,7 +424,7 @@ function setWorkoutCards(set) {
     header.className = 'exercises__workout-header';
     const headerImg = document.createElement('img');
     headerImg.className = 'exercises__workout-header-img';
-    headerImg.src = 'img/run-dark.png';
+    headerImg.src = runDarkUrl;
     headerImg.alt = 'Run icon';
     const headerName = document.createElement('h3');
     headerName.className = 'exercises__workout-header-name';
@@ -559,8 +538,6 @@ function onClosePopUpClick() {
   const img = document.querySelector('.pop-up__img');
   const h2 = document.querySelector('.pop-up__h2');
   const grade = document.querySelector('.pop-up__grade-value');
-  // const stars = document.querySelectorAll('.pop-up__grade-star');
-  // const metrics = document.querySelectorAll('.pop-up__metrics-p');
   const summary = document.querySelector('.pop-up__summary');
 
   img.src = '';
@@ -576,7 +553,7 @@ function onClosePopUpClick() {
 
   const ratingStars = document.querySelectorAll('.pop-up__grade-star-rating');
   ratingStars.forEach(star => {
-    star.src = 'img/Star-dark.png';
+    star.src = starDarkUrl;
   });
 }
 
@@ -625,7 +602,7 @@ async function renderPopUp(id) {
 
   stars.forEach((star, index) => {
     if (index + 1 > Math.ceil(data.rating)) {
-      star.src = 'img/Star-dark.png';
+      star.src = starDarkUrl;
     }
   });
 
@@ -726,9 +703,9 @@ function setRatingValue(starKey) {
   const stars = document.querySelectorAll('.pop-up__grade-star-rating');
   stars.forEach((star, index) => {
     if (index < Number(starKey)) {
-      star.src = 'img/star.svg';
+      star.src = starUrl;
     } else {
-      star.src = 'img/Star-dark.png';
+      star.src = starDarkUrl;
     }
   });
 }
