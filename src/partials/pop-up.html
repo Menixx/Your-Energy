@@ -1,56 +1,107 @@
-<div class="pop-up">
+<div class="pop-up" data-current-exercise-data="#">
   <button class="pop-up__close-btn"></button>
 
-  <div class="pop-up__img-wrapper">
-    <img class="pop-up__img" src="" alt="Loading..." />
-  </div>
-  <div class="pop-up__info-wrapper">
-    <h2 class="pop-up__h2"></h2>
-    <div class="pop-up__grade">
-      <p class="pop-up__grade-value"></p>
+  <div class="pop-up__main-content-wrapper">
+    <div class="pop-up__img-wrapper">
+      <img class="pop-up__img" src="" alt="Loading..." />
+    </div>
+    <div class="pop-up__info-wrapper">
+      <h2 class="pop-up__h2"></h2>
+      <div class="pop-up__grade pop-up__rating-grade">
+        <p class="pop-up__grade-value"></p>
 
-      <img class="pop-up__grade-star" src="./img/star.svg" alt="Star" />
-      <img class="pop-up__grade-star" src="./img/star.svg" alt="Star" />
-      <img class="pop-up__grade-star" src="./img/star.svg" alt="Star" />
-      <img class="pop-up__grade-star" src="./img/star.svg" alt="Star" />
-      <img class="pop-up__grade-star" src="./img/star.svg" alt="Star" />
-    </div>
-    <div class="pop-up__metrics">
-      <div class="pop-up__metrics-item">
-        <h3 class="pop-up__metrics-h3">Target</h3>
-        <p class="pop-up__metrics-p" data-key="target"></p>
+        <img class="pop-up__grade-star" src="img/star.svg" alt="Star" />
+        <img class="pop-up__grade-star" src="img/star.svg" alt="Star" />
+        <img class="pop-up__grade-star" src="img/star.svg" alt="Star" />
+        <img class="pop-up__grade-star" src="img/star.svg" alt="Star" />
+        <img class="pop-up__grade-star" src="img/star.svg" alt="Star" />
       </div>
-      <div class="pop-up__metrics-item">
-        <h3 class="pop-up__metrics-h3">Body Part</h3>
-        <p class="pop-up__metrics-p" data-key="bodyPart"></p>
+      <div class="pop-up__metrics">
+        <div class="pop-up__metrics-item">
+          <h3 class="pop-up__metrics-h3">Target</h3>
+          <p class="pop-up__metrics-p" data-key="target"></p>
+        </div>
+        <div class="pop-up__metrics-item">
+          <h3 class="pop-up__metrics-h3">Body Part</h3>
+          <p class="pop-up__metrics-p" data-key="bodyPart"></p>
+        </div>
+        <div class="pop-up__metrics-item">
+          <h3 class="pop-up__metrics-h3">Equipment</h3>
+          <p class="pop-up__metrics-p" data-key="equipment"></p>
+        </div>
+        <div class="pop-up__metrics-item">
+          <h3 class="pop-up__metrics-h3">Popular</h3>
+          <p class="pop-up__metrics-p" data-key="popularity"></p>
+        </div>
+        <div class="pop-up__metrics-item">
+          <h3 class="pop-up__metrics-h3">Burned Calories</h3>
+          <p class="pop-up__metrics-p" data-key="burnedCalories"></p>
+        </div>
       </div>
-      <div class="pop-up__metrics-item">
-        <h3 class="pop-up__metrics-h3">Equipment</h3>
-        <p class="pop-up__metrics-p" data-key="equipment"></p>
+      <div class="pop-up__summary"></div>
+      <div class="pop-up__btn-wrapper">
+        <button class="pop-up__btn pop-up__btn-fav">
+          Add to favorites
+          <img
+            class="pop-up__btn-fav-img"
+            src="img/heart.svg"
+            alt="Heart icon"
+          />
+        </button>
+        <button class="pop-up__btn pop-up__btn-rating">Give a rating</button>
       </div>
-      <div class="pop-up__metrics-item">
-        <h3 class="pop-up__metrics-h3">Popular</h3>
-        <p class="pop-up__metrics-p" data-key="popularity"></p>
-      </div>
-      <div class="pop-up__metrics-item">
-        <h3 class="pop-up__metrics-h3">Burned Calories</h3>
-        <p class="pop-up__metrics-p" data-key="burnedCalories"></p>
-      </div>
-    </div>
-    <div class="pop-up__summary"></div>
-    <div class="pop-up__btn-wrapper">
-      <button class="pop-up__btn pop-up__btn-fav">
-        Add to favorites
-        <img
-          class="pop-up__btn-fav-img"
-          src="./img/heart.svg"
-          alt="Heart icon"
-        />
-      </button>
-      <button class="pop-up__btn pop-up__btn-rating">Give a rating</button>
     </div>
   </div>
-  <!-- <div class="pop-up__rating">
+  <div class="pop-up__rating" hidden>
     <p class="pop-up__rating-label">Rating</p>
-  </div> -->
+    <div class="pop-up__grade pop-up__rating-grade">
+      <p class="pop-up__rating-grade-value" data-value="0">0.0</p>
+
+      <img
+        class="pop-up__grade-star-rating"
+        src="img/Star-dark.png"
+        alt="Star"
+        data-star-key="1"
+      />
+      <img
+        class="pop-up__grade-star-rating"
+        src="img/Star-dark.png"
+        alt="Star"
+        data-star-key="2"
+      />
+      <img
+        class="pop-up__grade-star-rating"
+        src="img/Star-dark.png"
+        alt="Star"
+        data-star-key="3"
+      />
+      <img
+        class="pop-up__grade-star-rating"
+        src="img/Star-dark.png"
+        alt="Star"
+        data-star-key="4"
+      />
+      <img
+        class="pop-up__grade-star-rating"
+        src="img/Star-dark.png"
+        alt="Star"
+        data-star-key="5"
+      />
+    </div>
+    <form class="pop-up__rating-form">
+      <input
+        class="pop-up__rating-email"
+        type="email"
+        placeholder="Email"
+        pattern="^\w+(\.\w+)?@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$"
+        required
+      />
+      <textarea
+        class="pop-up__rating-text"
+        type="text"
+        placeholder="Your comment"
+      ></textarea>
+      <button class="pop-up__rating-btn" type="submit">Send</button>
+    </form>
+  </div>
 </div>

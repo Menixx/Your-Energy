@@ -424,7 +424,7 @@ function setWorkoutCards(set) {
     gradeValue.textContent = item.rating;
     const gradeStar = document.createElement('img');
     gradeStar.className = 'exercises__workout-grade-star';
-    gradeStar.src = '../img/star.svg';
+    gradeStar.src = 'img/star.svg';
     gradeStar.alt = 'Star icon';
     grade.appendChild(gradeValue);
     grade.appendChild(gradeStar);
@@ -436,7 +436,7 @@ function setWorkoutCards(set) {
     startText.textContent = 'Start';
     const startArrow = document.createElement('img');
     startArrow.className = 'exercises__workout-start-arrow';
-    startArrow.src = '../img/start-arrow.svg';
+    startArrow.src = 'img/start-arrow.svg';
     startArrow.alt = 'Arrow icon';
     start.appendChild(startText);
     start.appendChild(startArrow);
@@ -445,7 +445,7 @@ function setWorkoutCards(set) {
     header.className = 'exercises__workout-header';
     const headerImg = document.createElement('img');
     headerImg.className = 'exercises__workout-header-img';
-    headerImg.src = '../img/run-dark.png';
+    headerImg.src = 'img/run-dark.png';
     headerImg.alt = 'Run icon';
     const headerName = document.createElement('h3');
     headerName.className = 'exercises__workout-header-name';
@@ -576,7 +576,7 @@ function onClosePopUpClick() {
 
   const ratingStars = document.querySelectorAll('.pop-up__grade-star-rating');
   ratingStars.forEach(star => {
-    star.src = './img/Star-dark.png';
+    star.src = 'img/Star-dark.png';
   });
 }
 
@@ -625,7 +625,7 @@ async function renderPopUp(id) {
 
   stars.forEach((star, index) => {
     if (index + 1 > Math.ceil(data.rating)) {
-      star.src = './img/Star-dark.png';
+      star.src = 'img/Star-dark.png';
     }
   });
 
@@ -726,9 +726,9 @@ function setRatingValue(starKey) {
   const stars = document.querySelectorAll('.pop-up__grade-star-rating');
   stars.forEach((star, index) => {
     if (index < Number(starKey)) {
-      star.src = './img/star.svg';
+      star.src = 'img/star.svg';
     } else {
-      star.src = './img/Star-dark.png';
+      star.src = 'img/Star-dark.png';
     }
   });
 }
