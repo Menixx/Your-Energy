@@ -11,8 +11,8 @@
       href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
       rel="stylesheet"
     />
-    <script type="module" crossorigin src="/Your-Energy/assets/modulepreload-polyfill-B5Qt9EMX.js"></script>
-    <link rel="stylesheet" crossorigin href="/Your-Energy/assets/styles-Cfcu26vK.css">
+    <script type="module" crossorigin src="/Your-Energy/assets/main-BJXI5dQv.js"></script>
+    <link rel="stylesheet" crossorigin href="/Your-Energy/assets/styles-V5Pb9dke.css">
   </head>
   <body>
     <div class="mobile-menu-wrapper modal" hidden>
@@ -146,7 +146,49 @@
   </div>
 </header>
 
-      <main></main>
+      <main>
+        <div class="favorites__main-wrapper">
+          <section class="favorites-hero">
+  <h1 class="favorites-hero__head">Favorites</h1>
+  <div class="favorites-hero__quote-wrapper">
+    <blockquote class="quote">
+  <img
+    class="quote-run-icon"
+    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGYAAABgCAYAAADvhgd/AAAACXBIWXMAACE4AAAhOAFFljFgAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAsRSURBVHgB7V1NTxtJGn4xYDCyE6JsJoJktSONghQpI63ED1hyD3tP9h5+ANw3c09+ALnvcN+Ze5hjlFhaaSONlmilrEKC2MDGEzsYTEj2eTzVjN10V1d3V3dXA49kNbaLtl1Pv99vVY+Io/jy5csoDrVOpzM1Ojpa7fV6EzzitdGJiYnRw8PDscHx4+Pjnw4ODo7wf73Pnz8fVavVg6Ojo169Xt/D292RkZEjKRFGxBEoIi62Wq0LY2Nj9UqlMiEWAbL2cN49ENppNBptENUTh1EoMSQDEnEZx2lIQ0NyBKSpjcOuqyQVQgyIqLfb7dm8yQgDpKh18eLFHRD0iziC3IjxpAO6/6tPnz5ZVVO2AFUHM3WwdeHChV0pGLkQA+n4CgZ7xm+wXYULBGVKDFUWvKmvXZWQKBRJUCbEgJDq/v7+dXhCl+QUAB7izuTk5FaeToJ1Yj58+HAZP+J6WdSWKfKWHmvE0Lh3u90ZHK/KKQakZrtWq21lHbBaIYaqC7Zkrqy2JC4oPfAuN7JUbRVJCZBSg9q6eVZIIfhbeSG+efNmSjJCKomhPUGQ+LWcYSCD8CoLu5OYGMYm8FZ+L+dgHu41Ujv/FYtIRMw5KSdhm5zYNobq65yUk+CccG7EEmIRQ0N/1m2KDpwbWw6BMTHKJf5GzqEFstRznCtJCSMbw+ARpJTeJYYHNYvY4y7+XMCRwTBrMYxHfsBrP4olqDjn5zRBqBExe3t718se0eP738XjPiYrrAb0Fu8t4bglFsAMwdTU1KYkRKQqo0ErOynwmBZxWNaQQsxi3CM8rBTvOGdpnIFKxMmrrKNI+XHfZBCIm8PhrlgCPbWk9kZLDFL3M2W3K5iYvj0xHY+xd8QScK5RZKQThRahxFAMIda/k5IDxMzF/JdZW+qMgMMx/e7du9jnCyXmlKgwovCGD+TS/iAxEUgMpeW0ZIuhTt5KPLRhG9piEZxLprHi/E8gMS5KC1TCPNTSKtTMDzg+xEu0BZHfE2NjxScgcl0yAM47q5oazcb7X3Axlc/AEFfx30PepkQ0QdhP+PHNoKsdE7IsZt5WG8HhPXyelVjGjziJzhN1eUoLRE8cg87dneUDhDBWIQlN74ELrKlee4zDvHKHQ4Hxj7IihWBPHQ5GxAxJzPv376fxz87lw6i+4ri8HlTKZZ2ShKd8LOI1Eug/FyXtEd7bkIyBLMrGlStXIm3YkMTgB1hLW9sCo/YkpBAq0vfIoMpbw2v8ex7npaRxlcBzSgnGSB6AKuNvMSeGESrYnBbHEBTwwQ4sMtbAYx5PF/CYNzgViVgmATjnGiSkr+ZAiuQJfF6DTkBUgvNYlZXI6DdVsvEYGNOAXVyNsiEelNRkZkuiYOIEDLrLzqkxCTD6KkU/hMPDwzlTUghcsQ+kQEB9RmqmPjFUY64siRgEJnve95x24kRcAomJm3icFzP1JzbTMx48daYb0ycGUalzpIQY/aZ/HNWd/Gpn4p5/Qfc+c2zKG3yCv6lOrQbdmHOt1PSJgWjVxTEEGX1I9eOAoUYp/aDza6ThDrMMAxfGrG31R6nRvd8nBqogs47CJFBS4Fc1TX/wp5yDpGn6RhD5IOs+SQgoqhmpPlOguqkVhgp1HTwap4gJmrAgoy8JpWUAC94fyv1+iM8JO+e6WAQTmzo7wzimJo4Bk9P2PT9h9FNKi4e+E0BJxGesagJZBqaPxDJ2dnYoEIHBZoXr6MUxqIywp7aYhrdmWwI+iw0afwsjBa8/zoIUYnJyMlQoxripQV7pCFOoDPEivhtbjDpQMUNXlWpDSqLz1+VXKRm0H0xuBo3lZ34nllXYINSGEoGocMcJcRRUMX5SCNqgJPkzJXk/RY2j6mT6P6vazMD3mdC8VzEu3jiERYkPlgI2QpyIoXGYk79kmf73gO8SLjGov6Ru58wTSbPNtBXqTwapYdldGvmlICnNCKFCUSnhItbYRl95dcdZA0jOmn8M6zFZGfkw6Oa+wt4nKQlS1Gb8Xt3aQFGM0rESRFbW0M39WZGWoRhIeX33WC7IUW3FQurFsXmBTeGWpOUYrpJClIIYxi0g5p7ERFiZoAxgrqwMO9/dty0tLkA39xVuWSgOA9KykCQnVgZp0c09VZnTEoMJXpZkcFpaCO7fGfZepdvtOrs3JGsjCVUYY5Yy2JZwVcbdVsVBqERl0gwy+5wfZlGvtwl8v9C5r3ALXHETqYtgTOeL5Vq9TejmvrK/v98Vx8AIX2fwVd5rRaI7GmdV7T7u4qVcoJv7EZY39/b2/igOQderrLytP6un/YkXM6lgLiz3tIsOqPv/I6wjk7myI65LF0dgYPAHva3+EnDDZvBlnlscATfnHtG0yfYjf0hMRxxAlMEP2SjhLdQeswKR0sBzu+IU4DtoTUg/iYkSJ3V1YS2yXC2GSVuIWDHcZl9ZWBO4Stm3WcMXPRZUa9KSFAik/LX2sU9Mo9FoQWokL/CKZacjJppNd4zsI69g2geDqiLVHNXaX0W/KLa/iCmP9TBh2N7e1mqp4y4EeAhzUd2BaeAnY0S/S8UQfAbfBHQK6CrrPmMl65p+GKihJicntRfFcT2G+9ubXLlxoJroFkgGns7x/Gp9SqzzYPxKnE4efOadKOJhfP+V99oYD71ebzdqzDEx9Xp9F+rMygZxJAQTw5XFc94qgrhkeGDMElPl3DHIGKzl0WwRhig1RgzNli11hnM8SNklScP4o1I1TdN/ohOBz12NGMY1mStSEHChtqDG/h01bqi03G63txD0pCYGk/MniY9EZHhQrvbDiGEbmJjvINFSFJA0NtpxdogYrqbtdDo9Xb+TZaQiw4MiZVVnV+hAgJRldUOfQsA0/6VLl1omY8cC/nkbPyKtrWG3Y5gqs0KGhwFSQrMFipSlIu0KAUk13j7lhEVm7uzjx4/fpmlrUsafscTC8Qf9FrWnJmPwc3D4vgykUFrgYP3TdHxwN7WlfZVVENfAuTay6EjBOb+PyBxzpcBSkYGkh7g7mof6sLA13+Zoa2LD0PMrLIgcRFxpIULbl+A9vBJHwSxxFCmq5XVdHEAc2+JBG/UhrvmGO9SJQzCJVVQhzYlmDHzX3Vqt9kpiQtvw9/r1603X+s6iFiy5RApV2ObmZiKnQ0vMjRs3Dri9hrgF3Q+l1+dM2xJVGOdQEiCyRZaeBK5Cq7fgSIl1CSaHe8w8EEfAOUtzXxmj3mXoyLe65rQ8wU59tcmPV8nk88eIVQrLf/nBuXr69GmquMk45fvy5cuJmZmZmyMlWk9TBEjK1tbWRlIV5iFWLp634Jienr4p5whFq9X6+dq1a6nLwbGLJOf3JQsHXPn/wK7siAWc3wrLEqDCNhHdb4slnN88zgJsk0IkXlHGrQOZmJMzDqov26QQqZb60U+nsXPFlc4TzIjwt9uyKX6kXoNJD4Tu4VkiR7nEVryvMNi+CTb7uWLdXKBsYETP4PH27duZLpHM5LbxcApmXa7lJAFVF3Jfm1mpLj+sLyen3aFqY7pbTgnYckTVlRcphHWJGUTZpYe2hAVDk734bSNTYjyUjSBVg9rKwg02RS47Y1C9sebNuMdl743fjfWnZ8+evSiSFCIXifGDt0NBKeGyK2Vrdt+zC7UIlRWGQojxwFLC1atX69Vq9XKWS0CCQDK4wuH58+f/y9r1TYJCiRmER9L4+Dj70Gq294LmOlOoqQ5XcjWbzV9cJGMQzhDjx5MnT8Zu3bpV4xa4uLonQBYdB953pcqd8fwFOxpstTfLkbIVPUjhAZdsv3jxous6EX78H4Mwzs4MMpF9AAAAAElFTkSuQmCC"
+    alt="Decorative icon in form of a running man"
+  />
+  <h3 class="quote-head">Quote of the day</h3>
+  <p class="quote-text">
+    A lot of times I find that people who are blessed with the most talent don't
+    ever develop that attitude, and the ones who aren't blessed in that way are
+    the most competitive and have the biggest heart.
+  </p>
+  <cite class="quote-author">Tom Brady</cite>
+  <img
+    class="quote-commas-icon"
+    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAACXBIWXMAACE4AAAhOAFFljFgAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAP5SURBVHgB7ZrrTSMxFIVvQkDiqdBBOiB0MHQAFSRUQKggSQW7VECoIHRAqAA6YLYCWB7iB689J3KkkM1cv2bEH3/SiNGMM/a5vravrxFJJBKJRCKRSCQSIdSkYp6enjL8OazVantfX1/X29vbAymR+/v7ZqPRaNfr9Q6+n+E6Rh2TovINqQA2Ym1t7eTz87MHoc25V9dSEqijBaE93HZYB4ROn+P+Qftd6YKfn597qLyPq4nKv73Ds1wioTFXV1f7uO0te//29pZrvy9NMC2OhpzjNlsUOgPPc4ng8fGRQ4N1NIvK7O7uqj1clxJ4fX3twL1ucJtp5WzupgHP+YVxOl4YIovkYiG6h19eXvofHx+Dol6dx+ZuyzAuPBaLMQmGzB9bmSjBFItKBq7lbe62iBF7hdu240+s3w92aV+x4uBui3iKdaojSDAnD0+xD3D5iUf56ZgVP7Gs49ZWyDvwMLMxLd+yleWsDMOcbW5ujnwmLBi0iwnq3KUsgxn8GWjBxjzeY3hlZWUgdrEUN4TQ3+IJDQqxfVs5GhOBzbGr0Blego3lO2JpCKx+tLW1ZXWvZbgYlL0KYx6GLHNeLo1xdac1hmJhkIP19fVcAsD3OWZvtDLo1YudnZ2uBOI8aXFWlgrFGsbaS05KMWKJk2COK7hR11LsNEYsh4vYDXokkTgJxs6nY2nMCGPqUmIaYpmoYPBhpPdMsU5ajHa03jWWH0oEXNfFbtCRlIC1hzFrqo2BMS5jLQ+DnVjeRxn027esBSyNgUHOJALOD6JsDLgEleHKM+oOjWlX2RhEbYfae7qzlIg6hk0KRWvMHZarc+aSzCMGArfYBg6xM8rFDTWQwbfbqGPMv+ZRbtbikQSgBh4IBBgE+ATwM3Jc1mjLxOV3EgYNe+C75axrjZEwsaSF64ozvFYI4z+TcNomMeBFXWlMqNgZTJ8OLGUyiSMzaWBnCgVjfGYSCb6hjk+sAHsSiW0z81/5ohdMnEs8TST4Wsr7WC+SucnMCW1ZUsefK0jwLf2O2RmVgVc7NcEtKQEm5H2eV03lPYyJK5dqKWdZKosyw8JluOSi59EEB58SzBGU5qmyjkLBCN/+SiQmo7iUEl194lNYW5aie0cL/I2rR3kR9+K+WUtN8EQiYO86ZC6jjMosiHhSKBiB+UgiegAu23UodiGBsHdh0JF4UiiYuxCeGkgArvknNjjkzHiWIZUA1GXp/f2dJwe+bnfq838cTNqLhyfNEv2hy50qmL3MPac4uJ6ZkffRa17HKxzn2Jntu/Q0PW5jY2M/9FSDOJ88cBOAHu/K9y3dNMOBa+I7Wy6D2Uu4aja/ITCGuPU9kEskEolEIpH4cf4Bme+yuiyqEU0AAAAASUVORK5CYII="
+    alt="Decorative icon in form of two inverted commas"
+  />
+</blockquote>
+
+  </div>
+  <div class="favorites-hero__fact">
+    <img class="favorites-hero__fact-icon" src="data:image/svg+xml,%3csvg%20width='16'%20height='12'%20viewBox='0%200%2016%2012'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M2.6%201.71429H1.4C1.0675%201.71429%200.8%202.00089%200.8%202.35714V5.14286H0.2C0.09%205.14286%200%205.23929%200%205.35714V6.64286C0%206.76071%200.09%206.85714%200.2%206.85714H0.8V9.64286C0.8%209.99911%201.0675%2010.2857%201.4%2010.2857H2.6C2.9325%2010.2857%203.2%209.99911%203.2%209.64286V2.35714C3.2%202.00089%202.9325%201.71429%202.6%201.71429ZM15.8%205.14286H15.2V2.35714C15.2%202.00089%2014.9325%201.71429%2014.6%201.71429H13.4C13.0675%201.71429%2012.8%202.00089%2012.8%202.35714V9.64286C12.8%209.99911%2013.0675%2010.2857%2013.4%2010.2857H14.6C14.9325%2010.2857%2015.2%209.99911%2015.2%209.64286V6.85714H15.8C15.91%206.85714%2016%206.76071%2016%206.64286V5.35714C16%205.23929%2015.91%205.14286%2015.8%205.14286ZM11.4%200H10.2C9.8675%200%209.6%200.286607%209.6%200.642857V5.14286H6.4V0.642857C6.4%200.286607%206.1325%200%205.8%200H4.6C4.2675%200%204%200.286607%204%200.642857V11.3571C4%2011.7134%204.2675%2012%204.6%2012H5.8C6.1325%2012%206.4%2011.7134%206.4%2011.3571V6.85714H9.6V11.3571C9.6%2011.7134%209.8675%2012%2010.2%2012H11.4C11.7325%2012%2012%2011.7134%2012%2011.3571V0.642857C12%200.286607%2011.7325%200%2011.4%200Z'%20fill='%23242424'/%3e%3c/svg%3e" alt="" />
+    <h2 class="favorites-hero__fact-h2">110 min</h2>
+    <p class="favorites-hero__fact-p">Daily norm of sports</p>
+  </div>
+  <img class="favorites-hero__img" src="/Your-Energy/assets/favorites-hero-img-MHpki-Jm.png" alt="" />
+</section>
+
+          <section class="favorites-saved">
+            <p class="favorites-saved__p">
+              It appears that you haven't added any exercises to your favorites
+              yet. To get started, you can add exercises that you like to your
+              favorites for easier access in the future.
+            </p>
+          </section>
+        </div>
+      </main>
     </div>
 
   </body>
