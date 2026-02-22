@@ -116,8 +116,8 @@ async function setExercisesCardsAndGetResponse(
 
     return data;
   } catch (err) {
-    console.log(err);
     toast.danger('Server error');
+    throw err;
   }
 }
 
@@ -192,7 +192,7 @@ async function subscribe(validAddress) {
     const data = await response.json();
     toast.success(data.message);
   } catch (err) {
-    console.log('Помилка зʼєднання з сервером');
+    throw err;
     toast.danger('Something went wrong. Please try again later');
   }
 }
@@ -535,7 +535,6 @@ function onClosePopUpClick() {
 
   if (window.innerWidth >= 768) {
     popUp.style.width = '191cqw';
-    console.log(popUp.style.width);
   }
   if (window.innerWidth >= 1440) {
     popUp.style.width = '708px';
@@ -742,7 +741,6 @@ function onSearch() {
 }
 
 async function setSavedExercises() {
-  console.log('set cards');
   const saved = document.querySelector('.favorites-saved');
   const list = JSON.parse(localStorage.getItem('favorites'));
 
@@ -757,8 +755,6 @@ async function setSavedExercises() {
         'https://your-energy.b.goit.study/api/exercises/' + id
       );
       const item = await response.json();
-
-      // console.log(item);
 
       const card = document.createElement('li');
       card.classList.add('favorites__card');
@@ -840,7 +836,6 @@ async function setSavedExercises() {
 function onSavedClick(event) {
   if (event.target.closest('.favorites__remove')) {
     const item = event.target.closest('.favorites__card').dataset.data;
-    console.log(item);
     const id = JSON.parse(item)._id;
     const list = JSON.parse(localStorage.getItem('favorites'));
 
@@ -873,6 +868,11 @@ function onEscPopUp(event) {
   }
 }
 
+function normalizePath(path) {
+  if (path.endsWith('/')) return path + 'index.html';
+  return path;
+}
+
 // GLOBALS
 
 // зберігає кількість карток для exercises
@@ -898,14 +898,14 @@ let currentFilter = activeFilterEl ? activeFilterEl.dataset.filter : 'Muscles';
 let currentCard = null;
 
 // EXECUTION
-const currentPath = window.location.pathname;
+
+const currentPath = normalizePath(window.location.pathname);
 
 document.querySelectorAll('.main-menu__tab-link').forEach(link => {
-  const linkPath = link.pathname;
+  const linkPath = normalizePath(link.pathname);
 
   if (linkPath === currentPath) {
-    const linkWrapper = link.closest('.main-menu__tab');
-    linkWrapper.classList.add('main-menu__tab--current');
+    link.closest('.main-menu__tab').classList.add('main-menu__tab--current');
   }
 });
 
