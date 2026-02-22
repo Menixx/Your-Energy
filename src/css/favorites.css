@@ -3,7 +3,7 @@
   flex-direction: column;
 }
 
-@media (min-width: 769px) {
+@media (min-width: 1440px) {
   .favorites__main-wrapper {
     flex-direction: row;
     gap: 2.22cqw; /* 32px -> 2.22cqw (1440px container) */

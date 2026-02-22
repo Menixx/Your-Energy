@@ -104,7 +104,7 @@
   border-radius: 50%;
 }
 
-@media (min-width: 368px) {
+@media (min-width: 768px) {
   .exercises__container {
     padding-top: 8.33cqw; /* 64px -> 8.33cqw */
     padding-bottom: 13.02cqw; /* 100px -> 13.02cqw */
@@ -190,7 +190,7 @@
   }
 }
 
-@media (min-width: 769px) {
+@media (min-width: 1440px) {
   .exercises__container {
     padding-top: 4.44cqw;
     padding-bottom: 9.17cqw;

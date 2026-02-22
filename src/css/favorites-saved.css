@@ -31,7 +31,7 @@
   grid-template-columns: 25.07cqw auto auto; /* 92px -> 25.07cqw */
 }
 
-@media (min-width: 368px) {
+@media (min-width: 768px) {
   .favorites-saved {
     padding-bottom: unset;
 
@@ -62,7 +62,7 @@
   }
 }
 
-@media (min-width: 769px) {
+@media (min-width: 1440px) {
   .favorites-saved {
     width: 57.36cqw; /* 826px -> 57.36cqw (1440px container) */
     margin-top: 11.52cqw;

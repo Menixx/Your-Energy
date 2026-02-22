@@ -31,7 +31,7 @@
   margin-bottom: 4.36cqw; /* 16px -> 4.36cqw */
 }
 
-@media (min-width: 368px) {
+@media (min-width: 768px) {
   .quote {
     padding: 5.21cqw 5.21cqw 5.21cqw 11.72cqw; /* 40px -> 5.21cqw, 90px -> 11.72cqw (768px container) */
     border-radius: 2.6cqw; /* 20px -> 2.60cqw (768px container) */
@@ -56,8 +56,9 @@
   }
 }
 
-@media (min-width: 769px) {
+@media (min-width: 1440px) {
   .quote {
+    width: 100%;
     padding: 2.78cqw 2.78cqw 2.78cqw 6.25cqw; /* 40px -> 2.78cqw, 90px -> 6.25cqw (1440px container) */
     border-radius: 1.39cqw; /* 20px -> 1.39cqw (1440px container) */
     box-sizing: border-box;

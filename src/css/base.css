@@ -26,10 +26,11 @@ a {
 }
 
 .container {
-  padding: 0 5.45cqw 0; /* 20px -> 5.45cqw */
+  padding: 0 20px 0;
   margin: 0 auto;
-  max-width: 367px;
+  max-width: 375px;
   container-type: inline-size;
+  box-sizing: border-box;
 }
 
 .modal {
@@ -50,16 +51,21 @@ a {
   display: none !important;
 }
 
-@media (min-width: 368px) {
+input[type='search']::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  display: none;
+}
+
+@media (min-width: 768px) {
   .container {
-    padding: 0 4.17cqw 0; /* 32px -> 4.17cqw */
+    padding: 0 32px 0;
     max-width: 768px;
   }
 }
 
-@media (min-width: 769px) {
+@media (min-width: 1440px) {
   .container {
-    padding: 0 2.22cqw 0;
+    padding: 0 32px 0;
     max-width: 1440px;
   }
 }

@@ -1,4 +1,5 @@
-// import { Notyf } from 'notyf';
+import Toast from 'easy-v-toast/src/js/toast';
+import 'easy-v-toast/dist/toast.min.css';
 
 import starUrl from './img/star.svg';
 import startArrowUrl from './img/start-arrow.svg';
@@ -115,7 +116,8 @@ async function setExercisesCardsAndGetResponse(
 
     return data;
   } catch (err) {
-    console.log('Халепа');
+    console.log(err);
+    toast.danger('Server error');
   }
 }
 
@@ -178,18 +180,20 @@ async function subscribe(validAddress) {
     );
 
     if (response.status === 409) {
-      console.log('Ви вже підписані!');
+      toast.warning('You are already subscribed!');
       return;
     }
 
     if (!response.ok) {
+      toast.danger('Something went wrong. Please try again later');
       throw new Error('Server error');
     }
 
     const data = await response.json();
-    console.log(data.message);
+    toast.success(data.message);
   } catch (err) {
     console.log('Помилка зʼєднання з сервером');
+    toast.danger('Something went wrong. Please try again later');
   }
 }
 
@@ -345,7 +349,11 @@ function handlePagination(pagValue) {
   setPagination(paginationState);
 }
 
-async function setWorkoutCardsAndGetResponse(name, limit = 12, page = 1) {
+async function setWorkoutCardsAndGetResponse(name, limit = 8, page = 1) {
+  if (window.innerWidth >= 768) {
+    limit = 10;
+  }
+
   const keyword = document
     .querySelector('.exercises__search-input')
     .value.trim()
@@ -525,11 +533,12 @@ function onClosePopUpClick() {
   const popUp = document.querySelector('.pop-up');
   popUp.dataset.currentExerciseData = '#';
 
-  if (window.innerWidth > 367) {
-    popUp.style.width = '191.77cqw';
+  if (window.innerWidth >= 768) {
+    popUp.style.width = '191cqw';
+    console.log(popUp.style.width);
   }
-  if (window.innerWidth > 768) {
-    popUp.style.width = '49.17cqw';
+  if (window.innerWidth >= 1440) {
+    popUp.style.width = '708px';
   }
 
   const img = document.querySelector('.pop-up__img');
@@ -543,6 +552,7 @@ function onClosePopUpClick() {
   summary.textContent = '';
 
   popUp.removeEventListener('click', onPopUpClick);
+  document.removeEventListener('keydown', onEscPopUp);
 
   const valueP = document.querySelector('.pop-up__grade-value');
   valueP.textContent = '0.0';
@@ -573,6 +583,7 @@ function onWorkoutCardClick(event) {
   popUp.dataset.currentExerciseData = target.dataset.data;
 
   popUp.addEventListener('click', onPopUpClick);
+  document.addEventListener('keydown', onEscPopUp);
 }
 
 async function renderPopUp(id) {
@@ -641,12 +652,14 @@ function addToFavorites() {
   const popUp = document.querySelector('.pop-up');
   let list = JSON.parse(localStorage.getItem('favorites')) || [];
 
-  let data = popUp.dataset.currentExerciseData;
+  let id = JSON.parse(popUp.dataset.currentExerciseData)._id;
 
-  if (!list.includes(data)) {
-    list.push(data);
+  if (!list.includes(id)) {
+    list.push(id);
     localStorage.setItem('favorites', JSON.stringify(list));
   }
+
+  toast.success('Added to Favorites');
 }
 
 async function sendRatingForm() {
@@ -656,8 +669,7 @@ async function sendRatingForm() {
   const gradeVal = document.querySelector('.pop-up__rating-grade-value');
 
   if (!email.checkValidity() || !text.value) {
-    text.style.borderColor = 'red';
-    email.style.borderColor = 'red';
+    toast.danger('Invalid input');
     return;
   }
 
@@ -681,10 +693,10 @@ async function sendRatingForm() {
 
     if (!response.ok) throw new Error('Халепа');
 
-    text.style.borderColor = 'green';
-    email.style.borderColor = 'green';
     text.value = '';
     email.value = '';
+
+    toast.success('Thanks, rating is set successfuly');
   } catch (err) {
     throw err;
   }
@@ -729,7 +741,8 @@ function onSearch() {
   setWorkoutCardsAndGetResponse(currentCard);
 }
 
-function setSavedExercises() {
+async function setSavedExercises() {
+  console.log('set cards');
   const saved = document.querySelector('.favorites-saved');
   const list = JSON.parse(localStorage.getItem('favorites'));
 
@@ -738,74 +751,87 @@ function setSavedExercises() {
   saved.innerHTML = '';
   const fragment = document.createDocumentFragment();
 
-  for (let item of list) {
-    item = JSON.parse(item);
+  for (let id of list) {
+    try {
+      const response = await fetch(
+        'https://your-energy.b.goit.study/api/exercises/' + id
+      );
+      const item = await response.json();
 
-    const card = document.createElement('li');
-    card.classList.add('favorites__card');
-    card.dataset.data = JSON.stringify(item);
+      // console.log(item);
 
-    const badge = document.createElement('p');
-    badge.className = 'exercises__workout-badge';
-    badge.textContent = 'WORKOUT';
+      const card = document.createElement('li');
+      card.classList.add('favorites__card');
+      card.dataset.data = JSON.stringify(item);
 
-    const remove = document.createElement('img');
-    remove.src = 'img/remove-from-fav.svg';
-    remove.className = 'favorites__remove';
+      const badge = document.createElement('p');
+      badge.className = 'exercises__workout-badge';
+      badge.textContent = 'WORKOUT';
 
-    const start = document.createElement('div');
-    start.className = 'exercises__workout-start';
-    const startText = document.createElement('p');
-    startText.className = 'exercises__workout-start-text';
-    startText.textContent = 'Start';
-    const startArrow = document.createElement('img');
-    startArrow.className = 'exercises__workout-start-arrow';
-    startArrow.src = startArrowUrl;
-    startArrow.alt = 'Arrow icon';
-    start.appendChild(startText);
-    start.appendChild(startArrow);
+      const remove = document.createElement('img');
+      remove.src = 'img/remove-from-fav.svg';
+      remove.className = 'favorites__remove';
 
-    const header = document.createElement('div');
-    header.className = 'exercises__workout-header';
-    const headerImg = document.createElement('img');
-    headerImg.className = 'exercises__workout-header-img';
-    headerImg.src = runDarkUrl;
-    headerImg.alt = 'Run icon';
-    const headerName = document.createElement('h3');
-    headerName.className = 'exercises__workout-header-name';
-    headerName.textContent =
-      item.name[0].toUpperCase() + (item.name.slice ? item.name.slice(1) : '');
-    header.appendChild(headerImg);
-    header.appendChild(headerName);
+      const start = document.createElement('div');
+      start.className = 'exercises__workout-start';
+      const startText = document.createElement('p');
+      startText.className = 'exercises__workout-start-text';
+      startText.textContent = 'Start';
+      const startArrow = document.createElement('img');
+      startArrow.className = 'exercises__workout-start-arrow';
+      startArrow.src = startArrowUrl;
+      startArrow.alt = 'Arrow icon';
+      start.appendChild(startText);
+      start.appendChild(startArrow);
 
-    const info = document.createElement('div');
-    info.className = 'exercises__workout-info';
-    const calories = document.createElement('p');
-    calories.className = 'exercises__workout-info-calories';
-    calories.textContent = `Burned calories: ${item.burnedCalories}/${item.time}`;
-    const bodyPart = document.createElement('p');
-    bodyPart.className = 'exercises__workout-info-body-part';
-    bodyPart.textContent =
-      'Body part: ' +
-      (item.bodyPart
-        ? item.bodyPart[0].toUpperCase() + item.bodyPart.slice(1)
-        : '');
-    const target = document.createElement('p');
-    target.className = 'exercises__workout-info-target';
-    target.textContent =
-      'Target: ' +
-      (item.target ? item.target[0].toUpperCase() + item.target.slice(1) : '');
-    info.appendChild(calories);
-    info.appendChild(bodyPart);
-    info.appendChild(target);
+      const header = document.createElement('div');
+      header.className = 'exercises__workout-header';
+      const headerImg = document.createElement('img');
+      headerImg.className = 'exercises__workout-header-img';
+      headerImg.src = runDarkUrl;
+      headerImg.alt = 'Run icon';
+      const headerName = document.createElement('h3');
+      headerName.className = 'exercises__workout-header-name';
+      headerName.textContent =
+        item.name[0].toUpperCase() +
+        (item.name.slice ? item.name.slice(1) : '');
+      header.appendChild(headerImg);
+      header.appendChild(headerName);
 
-    card.appendChild(badge);
-    card.appendChild(remove);
-    card.appendChild(start);
-    card.appendChild(header);
-    card.appendChild(info);
+      const info = document.createElement('div');
+      info.className = 'exercises__workout-info';
+      const calories = document.createElement('p');
+      calories.className = 'exercises__workout-info-calories';
+      calories.textContent = `Burned calories: ${item.burnedCalories}/${item.time}`;
+      const bodyPart = document.createElement('p');
+      bodyPart.className = 'exercises__workout-info-body-part';
+      bodyPart.textContent =
+        'Body part: ' +
+        (item.bodyPart
+          ? item.bodyPart[0].toUpperCase() + item.bodyPart.slice(1)
+          : '');
+      const target = document.createElement('p');
+      target.className = 'exercises__workout-info-target';
+      target.textContent =
+        'Target: ' +
+        (item.target
+          ? item.target[0].toUpperCase() + item.target.slice(1)
+          : '');
+      info.appendChild(calories);
+      info.appendChild(bodyPart);
+      info.appendChild(target);
 
-    fragment.appendChild(card);
+      card.appendChild(badge);
+      card.appendChild(remove);
+      card.appendChild(start);
+      card.appendChild(header);
+      card.appendChild(info);
+
+      fragment.appendChild(card);
+    } catch (err) {
+      toast.danger('Server error');
+      throw err;
+    }
   }
 
   saved.appendChild(fragment);
@@ -814,9 +840,11 @@ function setSavedExercises() {
 function onSavedClick(event) {
   if (event.target.closest('.favorites__remove')) {
     const item = event.target.closest('.favorites__card').dataset.data;
+    console.log(item);
+    const id = JSON.parse(item)._id;
     const list = JSON.parse(localStorage.getItem('favorites'));
 
-    let i = list.indexOf(item);
+    let i = list.indexOf(id);
     list.splice(i, 1);
 
     localStorage.setItem('favorites', JSON.stringify(list));
@@ -834,6 +862,14 @@ function onSavedClick(event) {
 
       saved.appendChild(p);
     }
+
+    toast.success('Deleted from Favorites');
+  }
+}
+
+function onEscPopUp(event) {
+  if (event.key === 'Escape') {
+    onClosePopUpClick();
   }
 }
 
@@ -862,12 +898,22 @@ let currentFilter = activeFilterEl ? activeFilterEl.dataset.filter : 'Muscles';
 let currentCard = null;
 
 // EXECUTION
+const currentPath = window.location.pathname;
+
+document.querySelectorAll('.main-menu__tab-link').forEach(link => {
+  const linkPath = link.pathname;
+
+  if (linkPath === currentPath) {
+    const linkWrapper = link.closest('.main-menu__tab');
+    linkWrapper.classList.add('main-menu__tab--current');
+  }
+});
 
 const mobMenuBtn = document.querySelector('.header__menu-btn');
 const closeMenuBtn = document.querySelector('.mobile-menu__close-btn');
 // Only add mobile menu handler if mobile menu button exists
 if (mobMenuBtn && closeMenuBtn) {
-  if (window.innerWidth <= 367) {
+  if (window.innerWidth <= 768) {
     mobMenuBtn.addEventListener('click', mobMenuOpenHandler);
     cardsLimit = 9;
   }
@@ -904,6 +950,19 @@ if (footerSubscribe) {
       subscribe(emailInput.value);
     }
     if (emailInput) emailInput.value = '';
+  });
+}
+
+const toast = new Toast({
+  position: 'top-middle',
+});
+
+const popUpWrapper = document.querySelector('.pop-up-wrapper');
+if (popUpWrapper) {
+  popUpWrapper.addEventListener('click', event => {
+    if (!event.target.closest('.pop-up')) {
+      onClosePopUpClick();
+    }
   });
 }
 

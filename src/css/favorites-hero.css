@@ -44,7 +44,7 @@
   object-fit: cover;
 }
 
-@media (min-width: 368px) {
+@media (min-width: 768px) {
   .favorites-hero {
     margin-bottom: 10.9cqw; /* 40px -> 10.90cqw (768px container) */
 
@@ -91,7 +91,7 @@
   }
 }
 
-@media (min-width: 769px) {
+@media (min-width: 1440px) {
   .favorites-hero {
     margin-top: 6.53cqw;
     margin-bottom: unset;

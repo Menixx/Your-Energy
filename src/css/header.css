@@ -22,7 +22,7 @@
   display: none;
 }
 
-@media (min-width: 368px) {
+@media (min-width: 768px) {
   .header__socials {
     display: block;
   }
@@ -37,7 +37,7 @@
   }
 }
 
-@media (min-width: 769px) {
+@media (min-width: 1440px) {
   .header__logo {
     width: 9.17cqw;
     height: auto;

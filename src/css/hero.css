@@ -57,7 +57,7 @@
   padding: 0.9cqw 3.17cqw; /* 4px -> 1.09cqw, 12px -> 3.27cqw */
 }
 
-@media (min-width: 368px) {
+@media (min-width: 768px) {
   .hero__container {
     padding-top: 13.02cqw; /* 100px -> 13.02cqw (base 768px) */
     gap: 2.08cqw; /* 16px -> 2.08cqw */
@@ -96,7 +96,7 @@
   }
 }
 
-@media (min-width: 769px) {
+@media (min-width: 1440px) {
   .hero__container {
     padding-top: 6.67cqw;
     /* grid-template-columns: 1fr 1fr;
