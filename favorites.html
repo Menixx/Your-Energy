@@ -11,8 +11,10 @@
       href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
       rel="stylesheet"
     />
-    <script type="module" crossorigin src="/Your-Energy/assets/main-BJXI5dQv.js"></script>
-    <link rel="stylesheet" crossorigin href="/Your-Energy/assets/styles-V5Pb9dke.css">
+    <script type="module" crossorigin src="/Your-Energy/assets/vendor-HzQMPIW1.js"></script>
+    <script type="module" crossorigin src="/Your-Energy/assets/main-D8kGCEU-.js"></script>
+    <link rel="stylesheet" crossorigin href="/Your-Energy/assets/vendor-LrOJgBwy.css">
+    <link rel="stylesheet" crossorigin href="/Your-Energy/assets/styles-xxbReEky.css">
   </head>
   <body>
     <div class="mobile-menu-wrapper modal" hidden>
@@ -20,16 +22,16 @@
   <button class="mobile-menu__close-btn">
     <img src="data:image/svg+xml,%3csvg%20width='32'%20height='32'%20viewBox='0%200%2032%2032'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M24%208L8%2024'%20stroke='%23F4F4F4'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3cpath%20d='M8%208L24%2024'%20stroke='%23F4F4F4'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3c/svg%3e" alt="Close cross icon" />
   </button>
-  <nav class="main-menu">
-  <li class="main-menu__tab main-menu__tab--current">
-    <a href="index.html" rel="noopener noreferrer">Home</a>
-  </li>
+  <ul class="main-menu">
   <li class="main-menu__tab">
-    <a href="favorites.html" rel="noopener noreferrer" target="_blank"
-      >Favorites</a
+    <a class="main-menu__tab-link" href="/index.html" rel="noopener noreferrer"
+      >Home</a
     >
   </li>
-</nav>
+  <li class="main-menu__tab">
+    <a class="main-menu__tab-link" href="/favorites.html">Favorites</a>
+  </li>
+</ul>
 
   <div class="mobile-menu__socials">
     <ul class="socials">
@@ -81,19 +83,19 @@
 
     <div class="container">
       <header class="header">
-  <div class="header__container">
+  <div class="header__container container">
     <img class="header__logo" src="data:image/png;base64,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" alt="logo text your energy" />
     <div class="header__menu-wrapper">
-      <nav class="main-menu">
-  <li class="main-menu__tab main-menu__tab--current">
-    <a href="index.html" rel="noopener noreferrer">Home</a>
-  </li>
+      <ul class="main-menu">
   <li class="main-menu__tab">
-    <a href="favorites.html" rel="noopener noreferrer" target="_blank"
-      >Favorites</a
+    <a class="main-menu__tab-link" href="/index.html" rel="noopener noreferrer"
+      >Home</a
     >
   </li>
-</nav>
+  <li class="main-menu__tab">
+    <a class="main-menu__tab-link" href="/favorites.html">Favorites</a>
+  </li>
+</ul>
 
     </div>
     <div class="header__socials">
