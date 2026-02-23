@@ -10,12 +10,25 @@
       Transform your physique and embrace a healthier lifestyle with our
       comprehensive fitness and nutrition support.
     </p>
-    <img
-      class="hero__image"
-      src="img/hero-image.webp"
-      srcset="img/hero-image.webp 1x, img/hero-image@2x.webp 2x"
-      alt="An image presenting to women doing sport"
-    />
+    <picture class="hero__image">
+      <source
+        media="(min-width: 1440px)"
+        srcset="
+          img/hero-image-desktop.webp    1x,
+          img/hero-image-desktop@2x.webp 2x
+        "
+      />
+      <source
+        media="(min-width: 768px)"
+        srcset="img/hero-image-tablet.webp 1x, img/hero-image-tablet@2x.webp 2x"
+      />
+      <img
+        src="img/hero-image-mobile.webp"
+        srcset="img/hero-image-mobile.webp 1x, img/hero-image-mobile@2x.webp 2x"
+        alt="Image showing two women doing sport"
+      />
+    </picture>
+
     <img
       class="hero__image-mini"
       src="img/hero-image-mini.png"
