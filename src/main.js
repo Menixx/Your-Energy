@@ -581,6 +581,10 @@ function onWorkoutCardClick(event) {
   const popUp = document.querySelector('.pop-up');
   popUp.dataset.currentExerciseData = target.dataset.data;
 
+  if (window.innerWidth >= 768) {
+    popUp.style.maxWidth = '704px';
+  }
+
   popUp.addEventListener('click', onPopUpClick);
   document.addEventListener('keydown', onEscPopUp);
 }
@@ -713,12 +717,12 @@ function openRatingForm() {
   valueP.dataset.value = 0;
 
   const popUp = document.querySelector('.pop-up');
-  if (window.innerWidth > 367) {
-    popUp.style.width = '55.99cqw';
+  if (window.innerWidth >= 768) {
+    popUp.style.maxWidth = '430px';
   }
-  if (window.innerWidth > 768) {
-    popUp.style.width = '29.86cqw';
-  }
+  // if (window.innerWidth >= 1440) {
+  //   popUp.style.width = '2';
+  // }
 }
 
 function setRatingValue(starKey) {

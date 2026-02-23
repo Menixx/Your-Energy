@@ -1,6 +1,6 @@
 # Your-Energy
 
-[🔗 Відвідати додаток](https://menixx.github.io/Your-Energy/)
+🔗[Відвідати додаток](https://menixx.github.io/Your-Energy/)
 
 Веб-додаток для пошуку та організації фітнес-вправ з детальною інформацією про
 кожну вправу.

@@ -247,6 +247,7 @@
   }
 
   .pop-up__rating-form-item {
+    width: 350px;
   }
 
   .pop-up__rating-email {
