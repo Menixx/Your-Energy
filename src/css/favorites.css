@@ -6,6 +6,7 @@
 @media (min-width: 1440px) {
   .favorites__main-wrapper {
     flex-direction: row;
-    gap: 2.22cqw; /* 32px -> 2.22cqw (1440px container) */
+    justify-content: space-between;
+    gap: 32px;
   }
 }

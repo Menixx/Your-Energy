@@ -765,7 +765,7 @@ async function setSavedExercises() {
       badge.textContent = 'WORKOUT';
 
       const remove = document.createElement('img');
-      remove.src = 'img/remove-from-fav.svg';
+      remove.src = 'img/remove-from-fav.png';
       remove.className = 'favorites__remove';
 
       const start = document.createElement('div');

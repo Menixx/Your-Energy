@@ -172,7 +172,9 @@
   }
 
   .exercises-workout__cards {
-    gap: 4.17cqw 2.08cqw;
+    display: flex;
+    gap: 32px 16px;
+    flex-wrap: wrap;
 
     grid-row: 3;
     grid-column-start: 1;
@@ -180,9 +182,10 @@
   }
 
   .exercises__workout-card {
-    width: 44.79cqw;
+    width: 344px;
     padding: 2.08cqw;
     border-radius: 1.95cqw;
+    box-sizing: border-box;
 
     grid-template-columns: 9.9cqw auto auto;
   }
