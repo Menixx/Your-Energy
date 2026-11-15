@@ -1,115 +1,113 @@
 # Your-Energy
 
-🔗[Відвідати додаток](https://menixx.github.io/Your-Energy/)
+🔗 [Visit the App](https://menixx.github.io/Your-Energy/)
 
-Веб-додаток для пошуку та організації фітнес-вправ з детальною інформацією про
-кожну вправу.
+A web application for searching and organizing fitness exercises, providing detailed information about each exercise.
 
-## 📋 Опис
+## 📋 Description
 
-**Your-Energy** — це інтерактивна платформа, яка дозволяє користувачам:
+**Your-Energy** is an interactive platform that allows users to:
 
-- Переглядати каталог фітнес-вправ з фільтрацією по категоріям
-- Читати детальну інформацію про кожну вправу (описание, рівень складності,
-  калорійність)
-- Зберігати улюблені вправи у власнй колекції
-- Залишати відгуки та оцінки для вправ
-- Переглядати популярні цитати для мотивації
+- Browse a catalog of fitness exercises with category filtering
+- Read detailed information about each exercise (description, difficulty level, calorie consumption)
+- Save favorite exercises to their personal collection
+- Leave reviews and ratings for exercises
+- Browse popular motivational quotes
 
-## 🎨 Основні функції
+## 🎨 Main Features
 
-- **Каталог вправ** — повна база даних з фітнес-вправами
-- **Детальна інформація** — розширений опис, розрахункові метрики, рівні
-  складності
-- **Улюблені** — збереження вправ для швидкого доступу
-- **Рейтинг та відгуки** — система оцінок від користувачів
-- **Адаптивна версія** — повна підтримка мобільних пристроїв
-- **Мотиваційні цитати** — надихаючі висловлювання
+- **Exercise Catalog** — a comprehensive database of fitness exercises
+- **Detailed Information** — extended descriptions, calculated metrics, and difficulty levels
+- **Favorites** — save exercises for quick access
+- **Ratings and Reviews** — a user rating system
+- **Responsive Design** — full support for mobile devices
+- **Motivational Quotes** — inspiring quotes to keep users motivated
 
-## 🛠️ Технологічний стек
+## 🛠️ Technology Stack
 
-- **Vite** — швидкий збірник для фронтенд-проектів
-- **HTML5 / CSS3** — структура та стилізація
-- **JavaScript (Vanilla)** — логіка додатку без фреймворків
-- **Responsive Design** — адаптація для всіх розмірів екранів
-- **PostCSS** — обробка CSS з сортуванням медіа-запитів
+- **Vite** — a fast build tool for frontend projects
+- **HTML5 / CSS3** — structure and styling
+- **JavaScript (Vanilla)** — application logic without frameworks
+- **Responsive Design** — adaptation to all screen sizes
+- **PostCSS** — CSS processing with media query sorting
 
-## 📁 Структура проекту
+## 📁 Project Structure
 
-```
+```text
 Your-Energy/
 ├── src/
-│   ├── index.html              # Головна сторінка
-│   ├── favorites.html          # Сторінка улюблених вправ
-│   ├── page-2.html            # Сторінка 2
-│   ├── page-3.html            # Сторінка 3
-│   ├── main.js                # Основний JavaScript файл
-│   ├── css/                   # Стилі
-│   │   ├── styles.css         # Основні стилі
-│   │   ├── header.css         # Стилі заголовка
-│   │   ├── hero.css           # Стилі героя
-│   │   ├── footer.css         # Стилі футера
-│   │   ├── exercises.css      # Стилі вправ
-│   │   ├── favorites.css      # Стилі улюблених
-│   │   ├── pop-up.css         # Стилі модальних вікон
-│   │   └── ...                # Інші файли стилів
-│   ├── img/                   # Зображення та іконки
-│   └── partials/              # Переносимі HTML компоненти
-├── package.json               # Конфігурація проекту
-├── vite.config.js            # Конфігурація Vite
-└── README.md                 # Цей файл
+│   ├── index.html              # Main page
+│   ├── favorites.html           # Favorite exercises page
+│   ├── page-2.html              # Page 2
+│   ├── page-3.html              # Page 3
+│   ├── main.js                  # Main JavaScript file
+│   ├── css/                     # Stylesheets
+│   │   ├── styles.css           # Main styles
+│   │   ├── header.css            # Header styles
+│   │   ├── hero.css              # Hero section styles
+│   │   ├── footer.css            # Footer styles
+│   │   ├── exercises.css         # Exercise styles
+│   │   ├── favorites.css         # Favorites styles
+│   │   ├── pop-up.css            # Modal window styles
+│   │   └── ...                   # Other stylesheet files
+│   ├── img/                     # Images and icons
+│   └── partials/                # Reusable HTML components
+├── package.json                 # Project configuration
+├── vite.config.js               # Vite configuration
+└── README.md                    # This file
 ```
 
-## 🚀 Як запустити локально
+## 🚀 How to Run Locally
 
-1. **Клонування репозиторію:**
+1. **Clone the Repository:**
 
    ```bash
    git clone <repository-url>
    cd Your-Energy
    ```
 
-2. **Установка залежностей:**
+2. **Install Dependencies:**
 
    ```bash
    npm install
    ```
 
-3. **Запуск сервера розробки:**
+3. **Start the Development Server:**
 
    ```bash
    npm run dev
    ```
 
-   Додаток буде доступний за адресою `http://localhost:5173`
+   The application will be available at `http://localhost:5173`.
 
-4. **Побудова для продакшену:**
+4. **Build for Production:**
 
    ```bash
    npm run build
    ```
 
-5. **Перегляд побудованого проекту:**
+5. **Preview the Production Build:**
+
    ```bash
    npm run preview
    ```
 
-## 📱 Точки контролю (Breakpoints)
+## 📱 Breakpoints
 
-Проект оптимізований для трьох основних розмірів екранів:
+The project is optimized for three main screen sizes:
 
-- **Мобільні** — за умовченням (< 768px)
-- **Планшети** — від 768px
-- **Десктопи** — від 1440px
+- **Mobile** — by default (< 768px)
+- **Tablets** — from 768px
+- **Desktops** — from 1440px
 
-## 🎯 Компоненти
+## 🎯 Components
 
-Проект включає переносимі компоненти для модульності:
+The project includes reusable components to ensure modularity:
 
-- `header.html` — навігаційна панель
-- `hero.html` — секція героя
-- `exercises.html` — список вправ
-- `favorites-hero.html` — героя сторінки улюблених
-- `pop-up.html` — модальне вікно з детальною інформацією
-- `footer.html` — підвал сторінки
-- `socials.html` — соціальні мережі
+- `header.html` — navigation bar
+- `hero.html` — hero section
+- `exercises.html` — exercise list
+- `favorites-hero.html` — favorites page hero section
+- `pop-up.html` — modal window with detailed information
+- `footer.html` — page footer
+- `socials.html` — social media links
